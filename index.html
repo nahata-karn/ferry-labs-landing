@@ -157,6 +157,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     // preserve ordering (React before ReactDOM before Babel before text/babel).
     const doc = new DOMParser().parseFromString(template, 'text/html');
     document.documentElement.replaceWith(doc.documentElement);
+    document.head.insertAdjacentHTML('beforeend',
+      '<link rel="icon" type="image/svg+xml" href="/favicon.svg">' +
+      '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">' +
+      '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">'
+    );
     const dead = Array.from(document.scripts);
     for (const old of dead) {
       const s = document.createElement('script');
