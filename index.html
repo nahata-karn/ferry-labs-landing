@@ -39,6 +39,7 @@
        prototype's inline button styles; padding stays inline so the nav button
        and the larger hero button keep their sizes. */
     .book{
+      display:inline-flex;align-items:center;text-decoration:none;
       font-family:'Newsreader',serif !important;
       font-weight:500 !important;
       font-size:15px !important;
@@ -68,6 +69,16 @@
                  0 1px 0 #060f0a,
                  0 3px 8px rgba(0,0,0,0.4) !important;
     }
+    .book-nav{padding:12px 20px;}
+
+    /* Nav lives on the viewport (not inside the cover-scaled stage), so the
+       logo and CTA sit at the real screen edges with consistent padding. */
+    .hero-nav{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;
+      align-items:center;justify-content:space-between;
+      padding:24px clamp(20px,4vw,48px);border-bottom:1px solid rgba(242,239,231,0.1);}
+    .hero-logo{display:flex;align-items:center;gap:12px;}
+    .hero-logo span{font:500 15px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;
+      text-transform:uppercase;color:#F2EFE7;}
 
     /* ----- Logos carousel ----- */
     :root{--white:#FFFFFF;}
@@ -163,14 +174,6 @@
         <div style="position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(120% 95% at 50% 40%, rgba(5,11,10,0) 38%, rgba(5,11,10,0.66) 100%), linear-gradient(180deg, rgba(5,11,10,0.5) 0%, rgba(5,11,10,0.1) 34%, rgba(5,11,10,0.48) 66%, rgba(5,11,10,0.94) 100%);"></div>
         <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:4;opacity:.07;mix-blend-mode:overlay;pointer-events:none;" preserveAspectRatio="none"><filter id="grainD"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence></filter><rect width="100%" height="100%" filter="url(#grainD)"></rect></svg>
 
-        <div style="position:absolute;top:0;left:0;right:0;z-index:6;display:flex;align-items:center;justify-content:space-between;padding:28px 48px;border-bottom:1px solid rgba(242,239,231,0.1);">
-          <div style="display:flex;align-items:center;gap:12px;">
-            <svg width="30" height="20" viewBox="0 0 48 32" fill="none"><circle cx="24" cy="8" r="4.2" fill="#E0A050"></circle><path d="M5 23 C 17 16.5 31 16.5 43 23 C 31 19.8 17 19.8 5 23 Z" fill="#F2EFE7"></path></svg>
-            <span style="font:500 15px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#F2EFE7;">Ferry Labs</span>
-          </div>
-          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2V-2b0nbKnjqQ014dIBhsz2kkNc6HhUvJZVHkkyyVqghXglcnZ3pqhZPPVGfzdP-2nellxFYcG" target="_blank" rel="noopener" class="book" style="display:inline-flex;align-items:center;background:#102019;color:#F2EFE7;font:500 13px/1 'Space Grotesk',sans-serif;letter-spacing:.01em;padding:13px 22px;border:1px solid rgba(242,239,231,0.18);border-radius:8px;text-decoration:none;">Book a consultation</a>
-        </div>
-
         <div style="position:absolute;left:0;right:0;top:312px;z-index:6;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 40px;">
           <h1 style="margin:0;font-family:'Newsreader',serif;font-weight:400;font-size:84px;line-height:1.0;letter-spacing:-0.022em;color:#F2EFE7;animation:ferryFade .9s cubic-bezier(.2,.7,.25,1) .1s both;">AI partner to companies that<br>build the <em style="font-style:italic;font-weight:300;color:#E6B36A;">real world.</em></h1>
           <p style="max-width:720px;margin:26px 0 0;font-size:18px;line-height:1.5;color:rgba(242,239,231,0.74);animation:ferryFade .9s cubic-bezier(.2,.7,.25,1) .2s both;">Power generation, transmission, and data center teams trust Ferry Labs to turn decades of hard-won expertise into AI that compounds.</p>
@@ -180,6 +183,13 @@
         </div>
       </div>
 </div>
+    <nav class="hero-nav">
+      <div class="hero-logo">
+        <svg width="30" height="20" viewBox="0 0 48 32" fill="none"><circle cx="24" cy="8" r="4.2" fill="#E0A050"></circle><path d="M5 23 C 17 16.5 31 16.5 43 23 C 31 19.8 17 19.8 5 23 Z" fill="#F2EFE7"></path></svg>
+        <span>Ferry Labs</span>
+      </div>
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2V-2b0nbKnjqQ014dIBhsz2kkNc6HhUvJZVHkkyyVqghXglcnZ3pqhZPPVGfzdP-2nellxFYcG" target="_blank" rel="noopener" class="book book-nav">Book a consultation</a>
+    </nav>
   </section>
 
   <section id="pedigree" class="logos" aria-label="AI experts from leading organizations">
