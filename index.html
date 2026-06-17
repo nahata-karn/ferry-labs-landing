@@ -71,11 +71,17 @@
     }
     .book-nav{padding:12px 20px;}
 
-    /* Nav lives on the viewport (not inside the cover-scaled stage), so the
-       logo and CTA sit at the real screen edges with consistent padding. */
-    .hero-nav{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;
+    /* Sticky nav: fixed to the viewport (not inside the cover-scaled stage) so
+       the logo and CTA sit at the real screen edges and the bar stays visible
+       while scrolling. Transparent over the hero; a blurred dark backdrop fades
+       in once scrolled so content reads cleanly underneath. */
+    .site-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;
       align-items:center;justify-content:space-between;
-      padding:24px clamp(20px,4vw,48px);border-bottom:1px solid rgba(242,239,231,0.1);}
+      padding:22px clamp(20px,4vw,48px);border-bottom:1px solid rgba(242,239,231,0.1);
+      transition:background .25s ease, backdrop-filter .25s ease, padding .25s ease, border-color .25s ease;}
+    .site-nav.scrolled{padding-top:15px;padding-bottom:15px;
+      background:rgba(7,13,11,0.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      border-bottom-color:rgba(242,239,231,0.12);}
     .hero-logo{display:flex;align-items:center;gap:12px;}
     .hero-logo span{font:500 15px/1 'IBM Plex Mono',monospace;letter-spacing:.16em;
       text-transform:uppercase;color:#F2EFE7;}
@@ -117,6 +123,14 @@
   </style>
 </head>
 <body>
+
+  <nav class="site-nav" id="siteNav">
+    <div class="hero-logo">
+      <svg width="30" height="20" viewBox="0 0 48 32" fill="none"><circle cx="24" cy="8" r="4.2" fill="#E0A050"></circle><path d="M5 23 C 17 16.5 31 16.5 43 23 C 31 19.8 17 19.8 5 23 Z" fill="#F2EFE7"></path></svg>
+      <span>Ferry Labs</span>
+    </div>
+    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2V-2b0nbKnjqQ014dIBhsz2kkNc6HhUvJZVHkkyyVqghXglcnZ3pqhZPPVGfzdP-2nellxFYcG" target="_blank" rel="noopener" class="book book-nav">Book a consultation</a>
+  </nav>
 
   <section class="hero">
 <div id="ferry-stage">
@@ -183,13 +197,6 @@
         </div>
       </div>
 </div>
-    <nav class="hero-nav">
-      <div class="hero-logo">
-        <svg width="30" height="20" viewBox="0 0 48 32" fill="none"><circle cx="24" cy="8" r="4.2" fill="#E0A050"></circle><path d="M5 23 C 17 16.5 31 16.5 43 23 C 31 19.8 17 19.8 5 23 Z" fill="#F2EFE7"></path></svg>
-        <span>Ferry Labs</span>
-      </div>
-      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2V-2b0nbKnjqQ014dIBhsz2kkNc6HhUvJZVHkkyyVqghXglcnZ3pqhZPPVGfzdP-2nellxFYcG" target="_blank" rel="noopener" class="book book-nav">Book a consultation</a>
-    </nav>
   </section>
 
   <section id="pedigree" class="logos" aria-label="AI experts from leading organizations">
@@ -236,6 +243,12 @@
     (function(){
       var fit=function(){var st=document.getElementById('ferry-stage'); if(st){var s=Math.max(window.innerWidth/1440, window.innerHeight/760); st.style.transform='scale('+s+')';}};
       fit(); window.addEventListener('resize', fit);
+    })();
+    // Fade in the nav backdrop once the page is scrolled.
+    (function(){
+      var nav=document.getElementById('siteNav');
+      var onScroll=function(){nav.classList.toggle('scrolled', window.scrollY>24);};
+      onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
     })();
   </script>
 </body>
