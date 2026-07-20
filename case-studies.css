@@ -100,14 +100,16 @@ a {
   top: 14px;
   left: 50%;
   z-index: 10;
-  width: max-content;
+  width: min(560px, calc(100% - 24px));
   max-width: calc(100% - 24px);
   height: 64px;
   padding: 7px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 18px;
+  flex: 1;
+  min-width: 0;
   transform: translateX(-50%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 18px;
@@ -531,8 +533,8 @@ a {
 
   .site-header {
     top: 8px;
-    width: max-content;
-    max-width: calc(100% - 16px);
+    width: calc(100% - 16px);
+    max-width: none;
     height: 54px;
     padding: 6px;
     gap: 8px;
@@ -545,11 +547,17 @@ a {
 
   .site-nav {
     gap: 8px;
+    flex: 1;
+    min-width: 0;
+    justify-content: space-between;
   }
 
   .header-link {
     padding: 8px 1px;
     font-size: 11px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .site-header .nav-cta {
@@ -575,11 +583,14 @@ a {
   }
 
   .case-switcher {
-    overflow-x: auto;
+    overflow-x: visible;
+    grid-template-columns: 1fr;
   }
 
   .case-switch {
-    min-width: 280px;
+    min-width: 0;
+    grid-template-columns: 52px minmax(0, 1fr);
+    padding: 10px;
   }
 
   .case-hero {

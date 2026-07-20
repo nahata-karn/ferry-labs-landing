@@ -59,7 +59,7 @@ const navCss = `  @view-transition {
     z-index: 50;
     top: 14px;
     left: 50%;
-    width: max-content;
+    width: min(560px, calc(100% - 24px));
     max-width: calc(100% - 24px);
     transform: translateX(-50%);
     view-transition-name: ferry-nav;
@@ -95,7 +95,7 @@ const navCss = `  @view-transition {
     height: auto !important;
     display: block;
   }
-  .nav-links { display: flex; align-items: center; justify-content: flex-start; gap: 18px; }
+  .nav-links { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex: 1; min-width: 0; }
   .nav-link {
     padding: 10px 4px;
     color: rgba(255,255,255,0.76);
@@ -126,12 +126,12 @@ const navCss = `  @view-transition {
   .nav-cta:hover, .nav-cta:focus-visible { background: #3a69ff; transform: translateY(-1px); outline: none; }
   .nav-cta-short { display: none; }
   @media (max-width: 540px) {
-    .nav-wrap { top: 8px; width: max-content; max-width: calc(100% - 16px); }
-    .nav { height: 54px; padding: 6px; gap: 8px; border-radius: 15px; }
+    .nav-wrap { top: 8px; width: calc(100% - 16px); max-width: none; }
+    .nav { width: 100%; height: 54px; padding: 6px; gap: 8px; border-radius: 15px; }
     .brand { width: 36px; height: 36px; padding: 0; }
     .brand img { width: 27px !important; height: auto !important; }
-    .nav-links { gap: 8px; }
-    .nav-link { padding: 8px 1px; font-size: 11px; }
+    .nav-links { gap: 8px; justify-content: space-between; flex: 1; min-width: 0; }
+    .nav-link { min-width: 0; overflow: hidden; text-overflow: ellipsis; padding: 8px 1px; font-size: 11px; }
     .nav-cta { padding: 10px 12px; font-size: 12px; }
     .nav-cta-label { display: none; }
     .nav-cta-short { display: inline; }

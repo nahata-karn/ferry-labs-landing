@@ -41,5 +41,5 @@
 
     addClass('ferry-page-leaving');
     window.setTimeout(() => window.location.assign(link.href), 180);
-  });
+  }, true);
 })();
