@@ -86,3 +86,25 @@ test('ships the supplied MP4 byte for byte', () => {
   assert.ok(shipped.length > 0);
   assert.deepEqual(shipped, source);
 });
+
+test('fits the hero to the viewport and expands the left content lockup', () => {
+  assert.match(template, /html, body\s*\{[\s\S]*overflow:\s*hidden/);
+  assert.match(template, /#app\s*\{[\s\S]*height:\s*100svh/);
+  assert.match(template, /\.hero\s*\{[\s\S]*flex:\s*1 1 auto/);
+  assert.match(template, /\.hero\s*\{[\s\S]*min-height:\s*0/);
+  assert.match(
+    template,
+    /padding:\s*clamp\(72px, 10vh, 116px\) clamp\(32px, 5vw, 72px\) 24px/
+  );
+  assert.match(template, /\.hero-grid\s*\{[\s\S]*max-width:\s*900px/);
+  assert.match(template, /\.hero-copy\s*\{[\s\S]*max-width:\s*760px/);
+  assert.match(template, /maxWidth: "860px"/);
+});
+
+test('renders the Ferry Labs wordmark beside the logo', () => {
+  assert.match(template, /className="brand-name">Ferry Labs<\/span>/);
+  assert.match(
+    template,
+    /\.brand-name\s*\{[\s\S]*font-family:\s*'Google Sans'/
+  );
+});

@@ -29,7 +29,7 @@
 - Consumes: the current cinematic video hero and existing `.brand`/`.brand-name` CSS contract.
 - Produces: testable viewport-fit CSS, wider left copy bounds, two-line headline width, and visible brand-name markup.
 
-- [ ] **Step 1: Extend the existing contract test before production changes**
+- [x] **Step 1: Extend the existing contract test before production changes**
 
 Add these assertions to the existing copy/layout test file:
 
@@ -51,7 +51,7 @@ test('renders the Ferry Labs wordmark beside the logo', () => {
 });
 ```
 
-- [ ] **Step 2: Run the test and confirm RED**
+- [x] **Step 2: Run the test and confirm RED**
 
 Run:
 
@@ -61,7 +61,7 @@ node --test tests/hero-cover.test.mjs
 
 Expected: the two new layout/brand tests fail while the existing seven video, copy, CTA, and asset tests pass.
 
-- [ ] **Step 3: Add the viewport and width rules to the rewrite source**
+- [x] **Step 3: Add the viewport and width rules to the rewrite source**
 
 Add these declarations to `heroStyles` in `scripts/rewrite-cinematic-hero.mjs`:
 
@@ -94,7 +94,7 @@ Add these declarations to `heroStyles` in `scripts/rewrite-cinematic-hero.mjs`:
 
 Keep the existing mobile `.hero-content` padding override so the 20 px narrow-screen inset remains intact.
 
-- [ ] **Step 4: Add the wordmark and widen the headline in the rewrite source**
+- [x] **Step 4: Add the wordmark and widen the headline in the rewrite source**
 
 In `heroMarkup`, add the span immediately after the logo image and change the headline inline width:
 
@@ -109,11 +109,11 @@ Change the headline style to:
 <h1 className="headline" style={{ maxWidth: "860px", textAlign: "left" }}>{tweaks.headline}</h1>
 ```
 
-- [ ] **Step 5: Synchronize the embedded template mechanically**
+- [x] **Step 5: Synchronize the embedded template mechanically**
 
 Decode the JSON inside `script[type="__bundler/template"]`, replace the exact current hero style string and hero markup string with the updated values from `scripts/rewrite-cinematic-hero.mjs`, serialize the JSON while escaping closing script tags as `<\\/script>`, and write only the embedded payload back to `index.html`.
 
-- [ ] **Step 6: Run GREEN checks**
+- [x] **Step 6: Run GREEN checks**
 
 Run:
 
@@ -125,7 +125,7 @@ git diff --check
 
 Expected: 9 tests pass, 0 fail; syntax and whitespace checks exit 0.
 
-- [ ] **Step 7: Commit the layout implementation**
+- [x] **Step 7: Commit the layout implementation**
 
 ```bash
 git add index.html scripts/rewrite-cinematic-hero.mjs tests/hero-cover.test.mjs docs/superpowers/plans/2026-07-19-hero-fit-and-brand-lockup.md

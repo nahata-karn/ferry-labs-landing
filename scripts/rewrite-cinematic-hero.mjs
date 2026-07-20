@@ -37,9 +37,22 @@ function replaceExact(source, before, after, label) {
 }
 
 const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+  #app {
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
+  }
   .hero {
     position: relative;
     z-index: 1;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto;
     width: 100%;
     max-width: none;
     min-height: calc(100svh - 64px);
@@ -82,10 +95,11 @@ const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
     pointer-events: none;
   }
   .hero-content {
-    width: min(1280px, 100%);
-    min-height: inherit;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 0;
     margin: 0 auto;
-    padding: clamp(72px, 10vh, 116px) 32px 64px;
+    padding: clamp(72px, 10vh, 116px) clamp(32px, 5vw, 72px) 24px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -94,12 +108,13 @@ const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
   .hero-grid {
     display: block;
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
   }
   .hero-copy {
-    max-width: 560px;
+    max-width: 760px;
     margin-top: 30px;
   }
+  .brand-name { font-family: 'Google Sans', 'Inter', sans-serif; }
   .headline {
     font-family: 'Geist Pixel', 'Inter', sans-serif;
     font-size: clamp(36px, 5vw, 66px);
@@ -215,6 +230,18 @@ template = replaceExact(
   'hero headline default'
 );
 
+template = replaceExact(
+  template,
+  `              <div className="brand">
+                <img src="ferry-logo.png" alt="Ferry Labs" style={{ height: "42px", width: "auto", display: "block" }} />
+              </div>`,
+  `          <div className="brand">
+            <img src="ferry-logo.png" alt="Ferry Labs" style={{ height: "42px", width: "auto", display: "block" }} />
+            <span className="brand-name">Ferry Labs</span>
+          </div>`,
+  'Ferry Labs brand wordmark'
+);
+
 const heroMarkup = `      <section className="hero" data-screen-label="Hero">
         <img
           className="hero-cover-art"
@@ -236,7 +263,7 @@ const heroMarkup = `      <section className="hero" data-screen-label="Hero">
         <div className="hero-content">
           <div className="hero-grid">
             <div>
-              <h1 className="headline" style={{ maxWidth: "680px", textAlign: "left" }}>{tweaks.headline}</h1>
+                  <h1 className="headline" style={{ maxWidth: "860px", textAlign: "left" }}>{tweaks.headline}</h1>
             </div>
             <div className="hero-copy">
               <p className="lede">We build intelligent systems that learn from your experts and take on the most complex work your company depends on.</p>
