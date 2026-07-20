@@ -124,8 +124,8 @@ const navMarkup = `      <div className="nav-wrap">
             <a key={item.label} className="nav-link" href={item.href}>{item.label}</a>
             )}
             <a className="nav-cta" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
-              <span className="nav-cta-label">Book a consultation</span>
-              <span className="nav-cta-short">Book a call</span>
+              <span className="nav-cta-label">Start deployment</span>
+              <span className="nav-cta-short">Start deployment</span>
               <span aria-hidden>↗</span>
             </a>
           </div>

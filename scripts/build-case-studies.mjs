@@ -96,8 +96,8 @@ export function renderCaseStudiesPage(studies = CASE_STUDIES) {
       <a class="header-link" href="case-studies.html" aria-current="page">Case Studies</a>
       <a class="header-link" href="ferry-platform.html">Ferry Platform</a>
       <a class="nav-cta" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">
-        <span class="nav-cta-label">Book a consultation</span>
-        <span class="nav-cta-short">Book a call</span>
+        <span class="nav-cta-label">Start deployment</span>
+        <span class="nav-cta-short">Start deployment</span>
         <span aria-hidden="true">↗</span>
       </a>
     </nav>

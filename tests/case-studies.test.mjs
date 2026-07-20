@@ -91,7 +91,7 @@ test('renders accessible local imagery and conversion links', () => {
   assert.match(html, /href="https:\/\/calendar\.app\.google\/t69X39w3jLLAKn3L7"/);
   assert.match(html, /Book a free consultation/);
   assert.match(html, />Ferry Platform<\/a>/);
-  assert.match(html, /class="nav-cta"[\s\S]*Book a consultation[\s\S]*Book a call/);
+  assert.match(html, /class="nav-cta"[\s\S]*Start deployment/);
 });
 
 test('keeps every story section and bullet visible in static markup', () => {
@@ -155,7 +155,7 @@ test('links to case studies without changing landing conversion copy', () => {
   assert.match(landingTemplate, /href:\s*'case-studies\.html'/);
   assert.match(landingTemplate, /label:\s*'Ferry Platform'/);
   assert.match(landingTemplate, /className="nav-cta"/);
-  assert.match(landingTemplate, /nav-cta-short">Book a call/);
+  assert.match(landingTemplate, /nav-cta-short">Start deployment/);
   assert.match(landingTemplate, /AI for the companies building the physical future\./);
   assert.match(landingTemplate, /Book a free consultation/);
   assert.match(landingTemplate, /Ferry Labs, San Francisco/);

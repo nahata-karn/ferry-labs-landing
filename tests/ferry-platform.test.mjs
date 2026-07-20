@@ -111,6 +111,7 @@ test('marks Ferry Platform as the current navigation destination', () => {
     /href="ferry-platform\.html" aria-current="page">Ferry Platform<\/a>/
   );
   assert.match(html, /href="case-studies\.html">Case Studies<\/a>/);
+  assert.match(html, /class="nav-cta-label">Start deployment<\/span>/);
 });
 
 test('renders every supplied content block without rewriting it', () => {

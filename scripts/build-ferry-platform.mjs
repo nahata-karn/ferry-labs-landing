@@ -62,8 +62,8 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
       <a class="header-link" href="case-studies.html">Case Studies</a>
       <a class="header-link" href="ferry-platform.html" aria-current="page">Ferry Platform</a>
       <a class="nav-cta" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">
-        <span class="nav-cta-label">Book a consultation</span>
-        <span class="nav-cta-short">Book a call</span>
+        <span class="nav-cta-label">Start deployment</span>
+        <span class="nav-cta-short">Start deployment</span>
         <span aria-hidden="true">↗</span>
       </a>
     </nav>
