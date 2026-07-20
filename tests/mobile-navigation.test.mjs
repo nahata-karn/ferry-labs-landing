@@ -37,6 +37,6 @@ test('desktop subpage navigation keeps links beside the logo and pins the CTA', 
   for (const source of [caseStudiesCss, platformCss]) {
     assert.match(source, /\.site-header\s*\{[\s\S]*justify-content:\s*flex-start/);
     assert.match(source, /\.site-nav\s*\{[\s\S]*flex:\s*1[\s\S]*min-width:\s*0/);
-    assert.match(source, /\.nav-cta[\s\S]*margin-left:\s*auto/);
+    assert.match(source, /\.site-nav\s*\{[\s\S]*justify-content:\s*space-between/);
   }
 });
