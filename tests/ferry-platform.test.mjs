@@ -65,3 +65,11 @@ test('defines responsive workflow, capability, and deployment diagrams', () => {
   assert.match(css, /@media \(max-width:\s*760px\)/);
   assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)/);
 });
+
+test('marks Ferry Platform as the current navigation destination', () => {
+  assert.match(
+    html,
+    /href="ferry-platform\.html" aria-current="page">Ferry Platform<\/a>/
+  );
+  assert.match(html, /href="case-studies\.html">Case Studies<\/a>/);
+});

@@ -160,3 +160,10 @@ test('links to case studies without changing landing conversion copy', () => {
   assert.match(landingTemplate, /Book a free consultation/);
   assert.match(landingTemplate, /Ferry Labs, San Francisco/);
 });
+
+test('links the case-study navigation to the dedicated platform page', () => {
+  assert.match(
+    html,
+    /class="header-link" href="ferry-platform\.html">Ferry Platform<\/a>/
+  );
+});

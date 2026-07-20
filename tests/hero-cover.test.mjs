@@ -120,3 +120,11 @@ test('renders the Ferry logo as a standalone sticky navigation button', () => {
   assert.match(template, /\.nav-links\s*\{[\s\S]*gap:\s*18px/);
   assert.match(template, /\.nav-link\s*\{[\s\S]*font-family:\s*'Geist Pixel'/);
 });
+
+test('links Ferry Platform to the dedicated platform page', () => {
+  assert.match(
+    template,
+    /label:\s*'Ferry Platform',[\s\S]*?href:\s*'ferry-platform\.html'/
+  );
+  assert.doesNotMatch(template, /case-studies\.html#selected-case-study/);
+});

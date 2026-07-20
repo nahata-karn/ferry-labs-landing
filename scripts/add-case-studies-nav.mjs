@@ -13,7 +13,7 @@ if (start < 0 || end < 0) {
 let template = JSON.parse(outer.slice(start + open.length, end).trim());
 const desiredNav = `const NAV = [
   { label: 'Case Studies', href: 'case-studies.html' },
-  { label: 'Ferry Platform', href: 'case-studies.html#selected-case-study' }
+  { label: 'Ferry Platform', href: 'ferry-platform.html' }
 ];`;
 template = template.replace(/const NAV = \[[\s\S]*?\];/, desiredNav);
 
