@@ -3,7 +3,7 @@ export const BOOKING_URL = 'https://calendar.app.google/t69X39w3jLLAKn3L7';
 export const PLATFORM_PAGE = {
   title: 'Intelligence built inside your organization.',
   intro: 'Ferry works with your experts to modernize critical workflows and deploy intelligent systems built around your knowledge, context, and judgment.',
-  ctaLabel: 'Start a Deployment',
+  ctaLabel: 'Start deployment',
   customByDesign: [
     'Ferry does not sell a generic agent or ask your team to adapt to a predefined product.',
     'We begin with a complex, economically valuable workflow and build the system around how your organization actually operates.'

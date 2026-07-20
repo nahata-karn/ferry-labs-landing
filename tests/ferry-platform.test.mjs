@@ -15,7 +15,7 @@ test('stores the supplied platform copy verbatim', () => {
   );
   assert.equal(PLATFORM_PAGE.howWeWork.length, 5);
   assert.equal(PLATFORM_PAGE.includes.length, 6);
-  assert.equal(PLATFORM_PAGE.ctaLabel, 'Start a Deployment');
+  assert.equal(PLATFORM_PAGE.ctaLabel, 'Start deployment');
   assert.equal(BOOKING_URL, 'https://calendar.app.google/t69X39w3jLLAKn3L7');
 });
 
@@ -60,7 +60,7 @@ test('renders the image before the single page heading', () => {
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
   assert.ok(html.indexOf('ferry-platform-opening.png') < html.indexOf('<h1'));
   assert.doesNotMatch(html, />Ferry Platform<\/h1>/);
-  assert.equal((html.match(/>Start a Deployment <span/g) ?? []).length, 2);
+  assert.equal((html.match(/>Start deployment <span/g) ?? []).length, 2);
 });
 
 const html = readFileSync(new URL('../ferry-platform.html', import.meta.url), 'utf8');
