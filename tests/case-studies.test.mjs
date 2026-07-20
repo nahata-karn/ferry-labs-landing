@@ -121,6 +121,9 @@ test('uses restrained local visual enhancement', () => {
   assert.match(css, /\.icon-geometry/);
   assert.match(css, /\.impact-list/);
   assert.match(css, /backdrop-filter:\s*blur\(18px\)/);
+  assert.match(css, /\.site-header\s*\{[\s\S]*position:\s*fixed/);
+  assert.match(css, /\.header-link\s*\{[\s\S]*font-family:\s*'Geist Pixel'/);
+  assert.match(html, /<a class="brand"[^>]*>\s*<img[^>]*>\s*<\/a>/);
   assert.doesNotMatch(css, /animation:\s*[^n]/);
 });
 

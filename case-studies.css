@@ -57,17 +57,18 @@ a {
 }
 
 .site-header {
-  position: absolute;
+  position: fixed;
   top: 14px;
   left: 50%;
   z-index: 10;
-  width: min(760px, calc(100% - 24px));
+  width: max-content;
+  max-width: calc(100% - 24px);
   height: 64px;
   padding: 7px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
+  justify-content: flex-start;
+  gap: 8px;
   transform: translateX(-50%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 18px;
@@ -80,9 +81,14 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 17px;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 7px;
   flex: 0 0 auto;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .brand img {
@@ -100,13 +106,14 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 14px;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .header-link {
   padding: 10px 4px;
   color: rgba(255, 255, 255, 0.76);
+  font-family: 'Geist Pixel', 'Google Sans', system-ui, sans-serif;
   font-size: 14px;
   letter-spacing: 0;
   white-space: nowrap;
@@ -126,6 +133,7 @@ a {
   border-radius: 11px;
   background: var(--orbit);
   color: var(--white);
+  font-family: 'Geist Pixel', 'Google Sans', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
@@ -483,16 +491,15 @@ a {
 
   .site-header {
     top: 8px;
-    width: calc(100% - 16px);
+    width: max-content;
+    max-width: calc(100% - 16px);
     height: 54px;
     padding: 6px;
     gap: 8px;
     border-radius: 15px;
   }
 
-  .brand span {
-    display: none;
-  }
+  .brand { width: 42px; height: 42px; padding: 4px; }
 
   .site-nav {
     gap: 8px;

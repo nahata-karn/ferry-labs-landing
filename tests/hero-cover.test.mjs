@@ -111,10 +111,9 @@ test('fits the hero to the viewport and expands the left content lockup', () => 
   assert.match(template, /maxWidth: "860px"/);
 });
 
-test('renders the Ferry Labs wordmark beside the logo', () => {
-  assert.match(template, /className="brand-name">Ferry Labs<\/span>/);
-  assert.match(
-    template,
-    /\.brand-name\s*\{[\s\S]*font-family:\s*'Google Sans'/
-  );
+test('renders the Ferry logo as a standalone sticky navigation button', () => {
+  assert.doesNotMatch(template, /className="brand-name"/);
+  assert.match(template, /\.nav-wrap\s*\{[\s\S]*position:\s*fixed/);
+  assert.match(template, /\.brand\s*\{[\s\S]*width:\s*48px/);
+  assert.match(template, /\.nav-link\s*\{[\s\S]*font-family:\s*'Geist Pixel'/);
 });

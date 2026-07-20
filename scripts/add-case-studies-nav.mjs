@@ -24,21 +24,22 @@ if (navCssStart < 0 || navCssEnd < 0) {
 }
 
 const navCss = `  .nav-wrap {
-    position: absolute;
+    position: fixed;
     z-index: 50;
     top: 14px;
     left: 50%;
-    width: min(760px, calc(100% - 24px));
+    width: max-content;
+    max-width: calc(100% - 24px);
     transform: translateX(-50%);
   }
   .nav {
-    width: 100%;
+    width: auto;
     height: 64px;
     padding: 7px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 18px;
+    justify-content: flex-start;
+    gap: 8px;
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 18px;
     background: rgba(17,24,45,0.58);
@@ -49,16 +50,20 @@ const navCss = `  .nav-wrap {
   .brand {
     display: flex;
     align-items: center;
-    gap: 9px;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 7px;
     flex: 0 0 auto;
-    font-family: 'Google Sans', 'Inter', sans-serif;
+    border-radius: 11px;
+    background: rgba(255,255,255,0.09);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
   }
-  .brand-name { font-size: 16px; font-weight: 400; color: var(--white); }
-  .nav-links { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
+  .nav-links { display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
   .nav-link {
     padding: 10px 4px;
     color: rgba(255,255,255,0.76);
-    font-family: 'Google Sans', 'Inter', sans-serif;
+    font-family: 'Geist Pixel', 'Google Sans', 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0;
@@ -75,7 +80,7 @@ const navCss = `  .nav-wrap {
     border-radius: 11px;
     background: var(--orbit);
     color: var(--white);
-    font-family: 'Google Sans', 'Inter', sans-serif;
+    font-family: 'Geist Pixel', 'Google Sans', 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 500;
     white-space: nowrap;
@@ -85,9 +90,9 @@ const navCss = `  .nav-wrap {
   .nav-cta:hover, .nav-cta:focus-visible { background: #3a69ff; transform: translateY(-1px); outline: none; }
   .nav-cta-short { display: none; }
   @media (max-width: 540px) {
-    .nav-wrap { top: 8px; width: calc(100% - 16px); }
+    .nav-wrap { top: 8px; width: max-content; max-width: calc(100% - 16px); }
     .nav { height: 54px; padding: 6px; gap: 8px; border-radius: 15px; }
-    .brand-name { display: none; }
+    .brand { width: 42px; height: 42px; padding: 4px; }
     .nav-links { gap: 8px; }
     .nav-link { padding: 8px 1px; font-size: 11px; }
     .nav-cta { padding: 10px 12px; font-size: 12px; }
@@ -108,7 +113,6 @@ const navMarkup = `      <div className="nav-wrap">
         <nav className="nav" aria-label="Primary">
           <a className="brand" href="index.html" aria-label="Ferry Labs home">
             <img src="ferry-logo.png" alt="" style={{ height: "34px", width: "auto", display: "block" }} />
-            <span className="brand-name">Ferry Labs</span>
           </a>
           <div className="nav-links">
             {NAV.map((item) =>
