@@ -26,9 +26,17 @@ test('all site headers fit within a narrow viewport', () => {
 });
 
 test('case-study selector becomes a single-column mobile control', () => {
-  assert.match(caseStudiesHtml, /case-studies\.css\?v=20260720-mobile/);
-  assert.match(platformHtml, /ferry-platform\.css\?v=20260720-mobile/);
+  assert.match(caseStudiesHtml, /case-studies\.css\?v=20260720-nav/);
+  assert.match(platformHtml, /ferry-platform\.css\?v=20260720-nav/);
   assert.match(caseStudiesCss, /\.case-switcher\s*\{[\s\S]*grid-template-columns:\s*1fr/);
   assert.match(caseStudiesCss, /\.case-switch\s*\{[\s\S]*min-width:\s*0/);
   assert.match(caseStudiesCss, /\.case-switch img\s*\{[\s\S]*width:\s*52px[\s\S]*height:\s*52px/);
+});
+
+test('desktop subpage navigation keeps links beside the logo and pins the CTA', () => {
+  for (const source of [caseStudiesCss, platformCss]) {
+    assert.match(source, /\.site-header\s*\{[\s\S]*justify-content:\s*flex-start/);
+    assert.match(source, /\.site-nav\s*\{[\s\S]*flex:\s*1[\s\S]*min-width:\s*0/);
+    assert.match(source, /\.nav-cta[\s\S]*margin-left:\s*auto/);
+  }
 });

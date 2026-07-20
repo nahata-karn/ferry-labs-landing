@@ -106,7 +106,7 @@ a {
   padding: 7px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 18px;
   flex: 1;
   min-width: 0;
@@ -142,6 +142,8 @@ a {
   align-items: center;
   justify-content: flex-start;
   gap: 18px;
+  flex: 1;
+  min-width: 0;
 }
 
 .header-link {
@@ -171,6 +173,7 @@ a {
   font-family: 'Geist Pixel', 'Google Sans', system-ui, sans-serif;
   font-weight: 500;
   white-space: nowrap;
+  margin-left: auto;
   transition: background 160ms ease, transform 160ms ease;
 }
 
@@ -517,6 +520,7 @@ a {
   .nav-cta {
     padding: 10px 12px;
     font-size: 12px;
+    margin-left: 0;
   }
 
   .nav-cta-label {

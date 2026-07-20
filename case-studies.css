@@ -106,7 +106,7 @@ a {
   padding: 7px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 18px;
   flex: 1;
   min-width: 0;
@@ -150,6 +150,8 @@ a {
   align-items: center;
   justify-content: flex-start;
   gap: 18px;
+  flex: 1;
+  min-width: 0;
 }
 
 .header-link {
@@ -179,6 +181,7 @@ a {
   font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
+  margin-left: auto;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
@@ -563,6 +566,7 @@ a {
   .site-header .nav-cta {
     padding: 10px 12px;
     font-size: 12px;
+    margin-left: 0;
   }
 
   .site-header .nav-cta-label {
