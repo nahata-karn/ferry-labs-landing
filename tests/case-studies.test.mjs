@@ -66,6 +66,21 @@ test('renders the gallery and both complete stories', () => {
   assert.match(html, /\$XXXM in estimated additional revenue/);
 });
 
+test('keeps the opening gallery compact, title-only, and uncropped', () => {
+  const gallery = html.slice(
+    html.indexOf('<section class="case-gallery"'),
+    html.indexOf('<section class="reader"')
+  );
+
+  assert.doesNotMatch(gallery, /class="case-number"/);
+  assert.doesNotMatch(gallery, /class="case-domain"/);
+  assert.doesNotMatch(gallery, /class="case-link-label"/);
+  assert.doesNotMatch(gallery, /Read case study/);
+  assert.match(css, /\.case-gallery\s*\{[\s\S]*max-width:\s*1120px/);
+  assert.match(css, /\.case-card-media\s*\{[\s\S]*aspect-ratio:\s*1\s*\/\s*1/);
+  assert.match(css, /\.case-card-media img\s*\{[\s\S]*object-fit:\s*contain/);
+});
+
 test('renders accessible local imagery and conversion links', () => {
   assert.match(html, /src="assets\/case-studies\/transmission-infrastructure\.png"/);
   assert.match(html, /src="assets\/case-studies\/spacecraft-engineering\.png"/);

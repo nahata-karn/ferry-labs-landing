@@ -29,12 +29,9 @@ const renderCard = (study) => `
      href="#${escapeHtml(study.slug)}">
     <span class="case-card-media">
       <img src="${escapeHtml(study.image)}" alt="" width="2048" height="2048">
-      <span class="case-number">${study.number}</span>
     </span>
     <span class="case-card-copy">
-      <span class="case-domain">Case study ${study.number}</span>
       <strong>${escapeHtml(study.title)}</strong>
-      <span class="case-link-label">Read case study <span aria-hidden="true">↗</span></span>
     </span>
   </a>`;
 
