@@ -11,11 +11,11 @@ test('ships exactly two immutable case studies', () => {
   assert.equal(CASE_STUDIES.length, 2);
   assert.equal(
     CASE_STUDIES[0].title,
-    'Scaling a $4B project portfolio without scaling senior headcount.'
+    'Scaling a $4B energy transmission portfolio without scaling senior headcount.'
   );
   assert.equal(
     CASE_STUDIES[1].title,
-    'Making spacecraft engineering move at production speed.'
+    'Compressing the spacecraft design-test-redesign cycle.'
   );
   assert.match(CASE_STUDIES[0].impact[0], /^10x less senior operator time per bid,/);
   assert.match(CASE_STUDIES[0].impact[1], /^\$XXXM in estimated additional revenue/);
@@ -62,7 +62,7 @@ test('renders the gallery and both complete stories', () => {
   assert.match(html, /<section class="reader"/);
   assert.match(html, /id="energy-transmission"/);
   assert.match(html, /id="spacecraft-engineering"/);
-  assert.match(html, /Scaling a \$4B project portfolio/);
+  assert.match(html, /Scaling a \$4B energy transmission portfolio/);
   assert.match(html, /A \$2\.3B satellite-platform manufacturer/);
   assert.match(html, /\$XXXM in estimated additional revenue/);
 });

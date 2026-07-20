@@ -5,7 +5,7 @@ export const CASE_STUDIES = [
   {
     slug: 'energy-transmission',
     number: '01',
-    title: 'Scaling a $4B project portfolio without scaling senior headcount.',
+    title: 'Scaling a $4B energy transmission portfolio without scaling senior headcount.',
     image: 'assets/case-studies/transmission-infrastructure.png',
     imageAlt:
       'A pixel-art transmission network stretches across a mountainous blue landscape.',
@@ -68,7 +68,7 @@ export const CASE_STUDIES = [
   {
     slug: 'spacecraft-engineering',
     number: '02',
-    title: 'Making spacecraft engineering move at production speed.',
+    title: 'Compressing the spacecraft design-test-redesign cycle.',
     image: 'assets/case-studies/spacecraft-engineering.png',
     imageAlt:
       'A pixel-art spacecraft stands beside a snow-covered mountain beneath a blue sky.',
