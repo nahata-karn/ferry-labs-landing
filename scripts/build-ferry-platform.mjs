@@ -19,12 +19,12 @@ const iconPaths = {
   platform: '<path d="M4 5h16v4H4zM6 11h12v4H6zM8 17h8v4H8z"/>',
   experts: '<path d="M4 5h6v6H4zM14 5h6v6h-6zM2 14h10v6H2zM12 14h10v6H12z"/>',
   improve: '<path d="M3 18h4v3H3zM9 14h4v7H9zM15 9h4v12h-4zM4 6h2v2H4zM6 4h10v2H6zM16 6h2v2h-2z"/>',
-  context: '<path d="M4 4h5v5H4zM15 4h5v5h-5zM9 15h6v6H9zM9 6h6v2H9zM11 8h2v7h-2z"/>',
-  agents: '<path d="M4 4h16v16H4zM7 8h2v2H7zM15 8h2v2h-2zM8 14h8v2H8z"/>',
-  evaluations: '<path d="M4 4h16v16H4zM7 8h2v2H7zM11 8h6v2h-6zM7 13h2v2H7zM11 13h6v2h-6z"/>',
-  integrations: '<path d="M3 7h7v4H3zM14 7h7v4h-7zM8 15h8v4H8zM10 8h4v2h-4zM11 10h2v5h-2z"/>',
-  review: '<path d="M4 4h16v16H4zM7 12l3 3 7-7 2 2-9 9-5-5z"/>',
-  controlled: '<path d="M5 18h4v3H5zM10 14h4v7h-4zM15 10h4v11h-4zM4 5h16v3H4z"/>'
+  archive: '<path d="M4 5h16v4H4zM6 11h12v8H6zM9 13h6v2H9z"/>',
+  agent: '<path d="M6 7h12v12H6zM10 3h4v2h-4zM4 11h2v4H4zM18 11h2v4h-2zM9 11h2v2H9zM13 11h2v2h-2zM10 16h4v1h-4z"/>',
+  target: '<path d="M10 3h4v4h-4zM6 7h12v4H6zM3 11h18v4H3zM6 15h12v4H6zM10 19h4v2h-4z"/>',
+  bridge: '<path d="M3 16h18v3H3zM5 12h4v4H5zM15 12h4v4h-4zM8 8h8v3H8zM10 5h4v3h-4z"/>',
+  approval: '<path d="M4 4h16v16H4zM7 12l3 3 7-7 2 2-9 9-5-5z"/>',
+  upgrade: '<path d="M4 18h4v3H4zM10 14h4v7h-4zM16 9h4v12h-4zM5 5h10V3l4 4-4 4V9H5z"/>'
 };
 
 const pixelIcon = (name) => `<svg class="pixel-icon pixel-icon-${name}" viewBox="0 0 24 24" aria-hidden="true" shape-rendering="crispEdges">${iconPaths[name]}</svg>`;
@@ -39,9 +39,8 @@ const engagementSchematic = `<svg class="system-schematic engagement-schematic" 
 </svg>`;
 
 export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
-  const steps = page.howWeWork.map(([title, body, icon], index) => `
+  const steps = page.howWeWork.map(([title, body, icon]) => `
         <article class="process-step">
-          <span class="step-number">${String(index + 1).padStart(2, '0')}</span>
           ${pixelIcon(icon)}
           <h3>${escapeHtml(title)}</h3>
           <p>${escapeHtml(body)}</p>

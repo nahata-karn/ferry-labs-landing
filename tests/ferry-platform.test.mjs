@@ -66,6 +66,17 @@ test('uses the Ferry visual system and analog-game icon language', () => {
   assert.doesNotMatch(html, /unpkg|jsdelivr|fontawesome|lucide/i);
 });
 
+test('keeps workflow steps unnumbered and deployment icons distinct', () => {
+  assert.doesNotMatch(html, /class="step-number"/);
+  assert.doesNotMatch(html, />0[1-5]<\/span>/);
+
+  const deploymentIcons = [...html.matchAll(/includes-grid[\s\S]*?<\/ul>/g)][0]?.[0]
+    .match(/pixel-icon-([a-z]+)/g)
+    .map((icon) => icon.replace('pixel-icon-', ''));
+  assert.deepEqual(deploymentIcons, ['archive', 'agent', 'target', 'bridge', 'approval', 'upgrade']);
+  assert.equal(new Set(deploymentIcons).size, 6);
+});
+
 test('keeps the opening image square, centered, and uncropped', () => {
   assert.match(css, /\.platform-hero-image\s*\{[\s\S]*width:\s*min\(100%,\s*432px\)/);
   assert.match(css, /\.platform-hero-image\s*\{[\s\S]*object-fit:\s*contain/);

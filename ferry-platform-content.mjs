@@ -16,12 +16,12 @@ export const PLATFORM_PAGE = {
     ['Improve and expand', 'Once the first workflow performs reliably, we improve it continuously and expand the platform into adjacent work.', 'improve']
   ],
   includes: [
-    ['A context layer built around your organization’s knowledge', 'context'],
-    ['Agents designed for your highest-value workflows', 'agents'],
-    ['Custom evaluations tuned to your standards and expert judgment', 'evaluations'],
-    ['Integrations with your existing software and data', 'integrations'],
-    ['Interfaces for expert review, correction, and approval', 'review'],
-    ['Infrastructure for controlled improvement over time', 'controlled']
+    ['A context layer built around your organization’s knowledge', 'archive'],
+    ['Agents designed for your highest-value workflows', 'agent'],
+    ['Custom evaluations tuned to your standards and expert judgment', 'target'],
+    ['Integrations with your existing software and data', 'bridge'],
+    ['Interfaces for expert review, correction, and approval', 'approval'],
+    ['Infrastructure for controlled improvement over time', 'upgrade']
   ],
   environments: [
     'Most Ferry systems are deployed inside the customer’s cloud or approved infrastructure, keeping sensitive data and system access under the customer’s control.',
