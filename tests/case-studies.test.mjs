@@ -69,9 +69,9 @@ test('renders the gallery and both complete stories', () => {
 
 test('starts directly with the detailed reader and side selector', () => {
   assert.doesNotMatch(html, /class="case-card/);
+  assert.doesNotMatch(html, /<header class="page-intro">/);
+  assert.doesNotMatch(html, />Case Studies<\/h1>/);
   assert.match(css, /\.reader\s*\{[\s\S]*grid-template-columns:/);
-  assert.match(css, /\.page-intro h1\s*\{[\s\S]*text-align:\s*center/);
-  assert.match(css, /\.page-intro h1\s*\{[\s\S]*margin:\s*0 auto/);
 });
 
 test('renders accessible local imagery and conversion links', () => {

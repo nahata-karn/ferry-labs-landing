@@ -95,9 +95,6 @@ export function renderCaseStudiesPage(studies = CASE_STUDIES) {
     <a class="header-link" href="case-studies.html" aria-current="page">Case Studies</a>
   </header>
   <main class="case-studies">
-    <header class="page-intro">
-      <h1>Case Studies</h1>
-    </header>
     <section class="reader" id="selected-case-study" aria-label="Selected case study">
       <nav class="case-switcher" aria-label="Choose a case study">${switcher}</nav>
       <div class="case-reader">${panels}</div>
