@@ -78,6 +78,7 @@ test('keeps the opening gallery compact, title-only, and uncropped', () => {
   assert.doesNotMatch(gallery, /Read case study/);
   assert.match(css, /\.case-gallery\s*\{[\s\S]*max-width:\s*952px/);
   assert.match(css, /\.page-intro h1\s*\{[\s\S]*text-align:\s*center/);
+  assert.match(css, /\.page-intro h1\s*\{[\s\S]*margin:\s*0 auto/);
   assert.match(css, /\.case-card-media\s*\{[\s\S]*aspect-ratio:\s*1\s*\/\s*1/);
   assert.match(css, /\.case-card-media img\s*\{[\s\S]*object-fit:\s*contain/);
 });
