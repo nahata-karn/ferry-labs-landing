@@ -1,6 +1,6 @@
 # Ferry Labs Case Studies Page Design
 
-**Status:** Design direction selected; awaiting final case-study copy and images  
+**Status:** Approved direction; awaiting final case-study copy and images
 **Date:** 2026-07-19
 
 ## Goal
