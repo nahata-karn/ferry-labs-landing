@@ -4,14 +4,15 @@
 
 **Goal:** Add a restrained, accessible cross-document fade between the Landing, Case Studies, and Ferry Platform pages.
 
-**Architecture:** Each page opts into the native same-origin View Transitions API through CSS. The existing landing-page mutation script owns the embedded landing styles, while the two dedicated page stylesheets own their page transitions; shared duration, easing, navigation naming, and reduced-motion behavior remain identical across all three outputs.
+**Architecture:** Each page opts into the native same-origin View Transitions API through CSS. A shared dependency-free script provides fade-out/navigation/fade-in behavior only when the native API is unavailable. The existing build paths load that shared fallback while preserving identical duration, easing, navigation naming, and reduced-motion behavior across all three outputs.
 
 **Tech Stack:** Static HTML, CSS View Transitions API, Node.js build scripts, Node test runner.
 
 ## Global Constraints
 
 - Fade duration is 260 milliseconds.
-- Do not add translation, scaling, blur, or JavaScript navigation interception.
+- Do not add translation, scaling, or blur.
+- Limit JavaScript navigation interception to the unsupported-browser fallback and unmodified, same-origin document links.
 - Keep the sticky navigation visually anchored with `view-transition-name: ferry-nav`.
 - Disable transition animation under `prefers-reduced-motion: reduce`.
 - Preserve all content, layout, URLs, browser-history behavior, and CTA behavior.
@@ -25,6 +26,11 @@
 - Modify: `scripts/add-case-studies-nav.mjs`
 - Modify: `case-studies.css`
 - Modify: `ferry-platform.css`
+- Create: `page-transitions.js`
+- Modify: `scripts/build-case-studies.mjs`
+- Modify: `scripts/build-ferry-platform.mjs`
+- Generated: `case-studies.html`
+- Generated: `ferry-platform.html`
 - Generated: `index.html`
 
 **Interfaces:**
@@ -75,6 +81,8 @@ Add the following contract to the landing template source and both standalone st
 ```
 
 Inside the existing reduced-motion media query, set both transition pseudo-elements to `animation: none !important`.
+
+Create `page-transitions.js` to intercept only unmodified same-origin page links when `document.startViewTransition` is unavailable, apply `ferry-page-leaving`, and navigate after 180 milliseconds. Add an entry class after load, and return immediately when reduced motion is requested.
 
 - [ ] **Step 4: Regenerate the landing page and verify the focused test passes**
 

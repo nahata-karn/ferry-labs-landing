@@ -127,7 +127,10 @@ test('uses restrained local visual enhancement', () => {
   assert.match(css, /\.brand\s*\{[\s\S]*width:\s*40px/);
   assert.match(html, /src="ferry-logo-mark\.png"/);
   assert.doesNotMatch(css, /mix-blend-mode:\s*screen/);
-  assert.doesNotMatch(css, /animation:\s*[^n]/);
+  assert.doesNotMatch(
+    css,
+    /\.(?:reader|case-panel|case-switch|story-section|workflow-step)[^{]*\{[^}]*\banimation\s*:/
+  );
 });
 
 const behavior = readFileSync(new URL('../case-studies.js', import.meta.url), 'utf8');

@@ -145,10 +145,11 @@ test('uses supplied artwork in place of the engagement diagram', () => {
   assert.doesNotMatch(css, /schematic-muted|schematic-accent/);
 });
 
-test('is semantic, dependency-free, and readable without JavaScript', () => {
+test('is semantic, locally enhanced, and readable without JavaScript', () => {
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
   assert.equal((html.match(/<h2/g) ?? []).length, 6);
-  assert.doesNotMatch(html, /<script/i);
+  assert.match(html, /<script src="page-transitions\.js"><\/script>/);
+  assert.doesNotMatch(html, /<script[^>]+(?:type="module"|src="https?:\/\/)/i);
   assert.doesNotMatch(html, /https?:\/\/(?!calendar\.app\.google)/i);
   assert.match(html, /aria-current="page"/);
   assert.match(html, /alt="A pixel-art satellite rises/);

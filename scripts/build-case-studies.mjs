@@ -84,6 +84,7 @@ export function renderCaseStudiesPage(studies = CASE_STUDIES) {
   <meta name="description" content="Selected Ferry Labs case studies.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="case-studies.css">
+  <script src="page-transitions.js"></script>
   <script>document.documentElement.classList.add('js')</script>
   <script type="module" src="case-studies.js"></script>
 </head>

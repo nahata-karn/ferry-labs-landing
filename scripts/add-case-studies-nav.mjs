@@ -11,6 +11,12 @@ if (start < 0 || end < 0) {
 }
 
 let template = JSON.parse(outer.slice(start + open.length, end).trim());
+if (!template.includes('src="page-transitions.js"')) {
+  template = template.replace(
+    '</head>',
+    '<script src="page-transitions.js"></script>\n</head>'
+  );
+}
 const desiredNav = `const NAV = [
   { label: 'Case Studies', href: 'case-studies.html' },
   { label: 'Ferry Platform', href: 'ferry-platform.html' }
@@ -23,7 +29,32 @@ if (navCssStart < 0 || navCssEnd < 0) {
   throw new Error('Landing navigation CSS not found');
 }
 
-const navCss = `  .nav-wrap {
+const navCss = `  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 260ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  ::view-transition-old(root) { animation-name: ferry-page-out; }
+  ::view-transition-new(root) { animation-name: ferry-page-in; }
+  @keyframes ferry-page-out { to { opacity: 0; } }
+  @keyframes ferry-page-in { from { opacity: 0; } }
+  html.ferry-transition-fallback body {
+    animation: ferry-fallback-in 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  html.ferry-transition-fallback.ferry-page-leaving body { opacity: 0; }
+  @keyframes ferry-fallback-in { from { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none !important;
+    }
+  }
+
+  .nav-wrap {
     position: fixed;
     z-index: 50;
     top: 14px;
@@ -31,6 +62,7 @@ const navCss = `  .nav-wrap {
     width: max-content;
     max-width: calc(100% - 24px);
     transform: translateX(-50%);
+    view-transition-name: ferry-nav;
   }
   .nav {
     width: auto;

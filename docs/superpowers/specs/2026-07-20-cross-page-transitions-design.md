@@ -14,7 +14,8 @@ Make navigation between the Landing, Case Studies, and Ferry Platform pages feel
 
 ## Compatibility and accessibility
 
-- Browsers without cross-document view transitions continue to use normal navigation with no JavaScript dependency.
+- Browsers without cross-document view transitions use a small dependency-free fallback that fades the current document out, performs the same-origin navigation, and fades the destination in.
+- The fallback ignores modified clicks, downloads, external links, new-tab links, and same-document hashes so native browser behavior remains intact.
 - Under `prefers-reduced-motion: reduce`, disable transition animations entirely.
 - Navigation URLs, browser history, open-in-new-tab behavior, and booking links remain unchanged.
 
@@ -25,6 +26,8 @@ The transition applies to the three first-party pages only:
 - `index.html`
 - `case-studies.html`
 - `ferry-platform.html`
+
+The fallback is implemented once in `page-transitions.js` and loaded by all three pages.
 
 No content, layout, copy, or CTA behavior changes are included.
 

@@ -52,6 +52,7 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
   <meta name="description" content="${escapeHtml(page.intro)}">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="ferry-platform.css?v=20260720">
+  <script src="page-transitions.js"></script>
 </head>
 <body>
   <header class="site-header">
