@@ -165,27 +165,27 @@ git commit -m "Add video background to cinematic hero"
 - Consumes: `cover-hero.mp4`, `.hero-cover-video`, `.hero-cover-art`, and the current hero DOM.
 - Produces: verified desktop and mobile video playback with still-image fallback and no regression to the CTA or page layout.
 
-- [ ] **Step 1: Reload the existing local feature preview**
+- [x] **Step 1: Reload the existing local feature preview**
 
 Use `http://127.0.0.1:4174/` and reload after the static-file changes.
 
-- [ ] **Step 2: Inspect desktop at 1440×900**
+- [x] **Step 2: Inspect desktop at 1440×900**
 
 Verify the video has `readyState >= 2`, `paused === false`, `muted === true`, `loop === true`, fills the hero, and preserves readable copy, the planet, city, and astronauts. Confirm the hero has one video, one fallback image, one CTA, no canvas, and no horizontal overflow.
 
-- [ ] **Step 3: Inspect mobile at 390×844**
+- [x] **Step 3: Inspect mobile at 390×844**
 
 Verify autoplay remains active and muted, the crop retains the astronauts and architecture, copy and CTA do not overlap, the footer follows the hero, and the document has no horizontal overflow.
 
-- [ ] **Step 4: Verify the reduced-motion fallback**
+- [x] **Step 4: Verify the reduced-motion fallback**
 
 Confirm the stylesheet includes the reduced-motion rule, the still image remains in the DOM beneath the video, and the still has the existing accessible alt text. Browser emulation is not required when the selected browser cannot override media preferences.
 
-- [ ] **Step 5: Check browser logs**
+- [x] **Step 5: Check browser logs**
 
 Confirm there are no new video, media, React, or asset-loading errors. The repository’s pre-existing Babel standalone development warning is not introduced by this change.
 
-- [ ] **Step 6: Run final verification**
+- [x] **Step 6: Run final verification**
 
 Run:
 
