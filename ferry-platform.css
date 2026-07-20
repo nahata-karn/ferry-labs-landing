@@ -257,28 +257,6 @@ a {
   margin-bottom: 28px;
 }
 
-.system-schematic {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.engagement-schematic-wrap {
-  padding: 10px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.schematic-muted {
-  fill: none;
-  stroke: var(--line-strong);
-  stroke-width: 2;
-}
-
-.schematic-accent {
-  fill: var(--ice);
-}
-
 .process-section > h2,
 .includes-section > h2 {
   margin-bottom: 44px;
@@ -390,10 +368,6 @@ a {
   width: 100%;
   aspect-ratio: 1;
   object-fit: contain;
-}
-
-.engagement-schematic {
-  max-height: 300px;
 }
 
 .closing-cta {

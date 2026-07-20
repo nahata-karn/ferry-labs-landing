@@ -46,6 +46,15 @@ test('ships the supplied custom and environment artwork byte-for-byte', () => {
   assert.equal(sha256(custom), '949e1a8cd7b770735f3fbbf439303e8370c34f171fae28e640473702ff383a73');
 });
 
+test('ships the supplied engagement artwork byte-for-byte', () => {
+  const image = readFileSync(
+    new URL('../assets/platform/how-we-engage.png', import.meta.url)
+  );
+
+  assert.equal(image.toString('ascii', 1, 4), 'PNG');
+  assert.equal(sha256(image), '9fe52fc52a168f7f1e9244fe6bd4905fe95abd80cf7629867036b41d062f9af0');
+});
+
 test('renders the image before the single page heading', () => {
   const html = readFileSync(new URL('../ferry-platform.html', import.meta.url), 'utf8');
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
@@ -125,6 +134,12 @@ test('uses supplied artwork in place of the custom and environment diagrams', ()
   assert.match(html, /src="assets\/platform\/environment\.png"/);
   assert.doesNotMatch(html, /class="custom-schematic"/);
   assert.doesNotMatch(html, /class="environment-diagram"/);
+});
+
+test('uses supplied artwork in place of the engagement diagram', () => {
+  assert.match(html, /src="assets\/platform\/how-we-engage\.png"/);
+  assert.doesNotMatch(html, /engagement-schematic|engagement-schematic-wrap/);
+  assert.doesNotMatch(css, /schematic-muted|schematic-accent/);
 });
 
 test('is semantic, dependency-free, and readable without JavaScript', () => {

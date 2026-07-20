@@ -29,15 +29,6 @@ const iconPaths = {
 
 const pixelIcon = (name) => `<svg class="pixel-icon pixel-icon-${name}" viewBox="0 0 24 24" aria-hidden="true" shape-rendering="crispEdges">${iconPaths[name]}</svg>`;
 
-const engagementSchematic = `<svg class="system-schematic engagement-schematic" viewBox="0 0 520 240" aria-hidden="true" shape-rendering="crispEdges">
-  <g class="schematic-muted"><rect x="36" y="44" width="152" height="152"/><rect x="332" y="44" width="152" height="152"/></g>
-  <g class="schematic-accent">
-    <rect x="84" y="72" width="56" height="48"/><rect x="64" y="136" width="96" height="36"/>
-    <rect x="380" y="72" width="56" height="48"/><rect x="360" y="136" width="96" height="36"/>
-    <path d="M188 104h48V88l24 32-24 32v-16h-48zM332 136h-48v16l-24-32 24-32v16h48z"/>
-  </g>
-</svg>`;
-
 export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
   const steps = page.howWeWork.map(([title, body, icon]) => `
         <article class="process-step">
@@ -122,7 +113,9 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
         <h2>How we engage</h2>
         ${paragraphs(page.engagement)}
       </div>
-      <div class="engagement-schematic-wrap">${engagementSchematic}</div>
+      <figure class="section-image section-image-engagement">
+        <img src="assets/platform/how-we-engage.png" alt="" loading="lazy">
+      </figure>
     </section>
 
     <section class="closing-cta">
