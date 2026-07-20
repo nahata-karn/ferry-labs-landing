@@ -55,7 +55,6 @@ const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
     height: auto;
     width: 100%;
     max-width: none;
-    min-height: calc(100svh - 64px);
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -155,7 +154,7 @@ const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
     margin-left: 0;
   }
   @media (max-width: 880px) {
-    .hero { min-height: calc(100svh - 64px); }
+    .hero { min-height: 0; }
     .hero-content { padding: 72px 24px 56px; }
     .hero-grid { max-width: 640px; }
     .hero-cover-art,
@@ -167,7 +166,7 @@ const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
     }
   }
   @media (max-width: 540px) {
-    .hero { min-height: calc(100svh - 56px); }
+    .hero { min-height: 0; }
     .hero-content { padding: 52px 20px 44px; }
     .hero-grid h1 { font-size: clamp(30px, 9vw, 42px) !important; }
     .hero-copy { margin-top: 24px; }

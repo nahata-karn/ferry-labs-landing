@@ -52,7 +52,9 @@ test('preserves the current conversion content and booking destination', () => {
 });
 
 test('includes explicit desktop and mobile framing', () => {
-  assert.match(template, /min-height:\s*calc\(100svh - 64px\)/);
+  assert.match(template, /#app\s*\{[\s\S]*height:\s*100svh/);
+  assert.match(template, /\.hero\s*\{[\s\S]*flex:\s*1 1 auto/);
+  assert.match(template, /\.hero\s*\{[\s\S]*min-height:\s*0/);
   assert.match(template, /@media \(max-width: 880px\)/);
   assert.match(template, /@media \(max-width: 540px\)/);
   assert.match(template, /object-position:\s*52% center/);
@@ -92,6 +94,12 @@ test('fits the hero to the viewport and expands the left content lockup', () => 
   assert.match(template, /#app\s*\{[\s\S]*height:\s*100svh/);
   assert.match(template, /\.hero\s*\{[\s\S]*flex:\s*1 1 auto/);
   assert.match(template, /\.hero\s*\{[\s\S]*min-height:\s*0/);
+  const heroStylesStart = template.indexOf(
+    '/* ---------- Cinematic cover hero ---------- */'
+  );
+  const heroStylesEnd = template.indexOf('@media (max-width: 880px)', heroStylesStart);
+  const heroBaseStyles = template.slice(heroStylesStart, heroStylesEnd);
+  assert.doesNotMatch(heroBaseStyles, /min-height:\s*calc\(100svh/);
   assert.match(
     template,
     /padding:\s*clamp\(72px, 10vh, 116px\) clamp\(32px, 5vw, 72px\) 24px/

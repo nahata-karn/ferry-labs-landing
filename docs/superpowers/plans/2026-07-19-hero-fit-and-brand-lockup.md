@@ -145,23 +145,23 @@ git commit -m "Fit hero layout and add Ferry Labs wordmark"
 - Consumes: viewport-fit rules, widened copy bounds, 860 px headline width, brand-name span, and existing video hero.
 - Produces: a responsive hero that shows the footer inside one viewport with no scrollbars.
 
-- [ ] **Step 1: Reload the feature preview**
+- [x] **Step 1: Reload the feature preview**
 
 Reload `http://127.0.0.1:4174/` after the static-file changes.
 
-- [ ] **Step 2: Inspect desktop at 1440×900**
+- [x] **Step 2: Inspect desktop at 1440×900**
 
 Confirm the copy begins around 72 px from the left edge, the headline wraps to two lines, the paragraph uses the wider left column, “Ferry Labs” appears beside the logo in Google Sans, the footer is visible, and `document.documentElement.scrollHeight === document.documentElement.clientHeight` with no horizontal overflow.
 
-- [ ] **Step 3: Inspect mobile at 390×844**
+- [x] **Step 3: Inspect mobile at 390×844**
 
 Confirm the 20 px inset, readable natural wrapping, brand lockup, video playback, footer visibility, and zero vertical/horizontal overflow at the mobile viewport.
 
-- [ ] **Step 4: Check DOM and browser logs**
+- [x] **Step 4: Check DOM and browser logs**
 
 Confirm one heading, one supporting paragraph, one CTA, one video, one fallback image, one wordmark, no canvas, and no new console errors. The pre-existing Babel standalone development warning is allowed.
 
-- [ ] **Step 5: Run final verification**
+- [x] **Step 5: Run final verification**
 
 Run:
 
