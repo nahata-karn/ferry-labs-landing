@@ -52,3 +52,34 @@ test('ships both supplied 2048px PNGs byte-for-byte', () => {
     'fcd79c77a9def25567a2610be4299f7bfee6254599dd942be3f096d8d4f418e7'
   );
 });
+
+const html = readFileSync(new URL('../case-studies.html', import.meta.url), 'utf8');
+
+test('renders the gallery and both complete stories', () => {
+  assert.match(html, /<main[^>]*class="case-studies"/);
+  assert.equal((html.match(/class="case-card"/g) ?? []).length, 2);
+  assert.equal((html.match(/class="case-panel"/g) ?? []).length, 2);
+  assert.match(html, /id="energy-transmission"/);
+  assert.match(html, /id="spacecraft-engineering"/);
+  assert.match(html, /Scaling a \$4B project portfolio/);
+  assert.match(html, /A \$2\.3B satellite-platform manufacturer/);
+  assert.match(html, /\$XXXM in estimated additional revenue/);
+});
+
+test('renders accessible local imagery and conversion links', () => {
+  assert.match(html, /src="assets\/case-studies\/transmission-infrastructure\.png"/);
+  assert.match(html, /src="assets\/case-studies\/spacecraft-engineering\.png"/);
+  assert.match(html, /alt="A pixel-art transmission network/);
+  assert.match(html, /alt="A pixel-art spacecraft stands/);
+  assert.match(html, /href="https:\/\/calendar\.app\.google\/t69X39w3jLLAKn3L7"/);
+  assert.match(html, /Book a free consultation/);
+});
+
+test('keeps every story section and bullet visible in static markup', () => {
+  assert.equal((html.match(/>Company<\/h3>/g) ?? []).length, 2);
+  assert.equal((html.match(/>The problem<\/h3>/g) ?? []).length, 2);
+  assert.equal((html.match(/>The Ferry platform<\/h3>/g) ?? []).length, 2);
+  assert.equal((html.match(/>Impact<\/h3>/g) ?? []).length, 2);
+  assert.match(html, /Find and validate evidence from previous projects/);
+  assert.match(html, /Preserve design intent across iterations/);
+});
