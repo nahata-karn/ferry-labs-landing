@@ -593,6 +593,11 @@ a {
     padding: 10px;
   }
 
+  .case-switch img {
+    width: 52px;
+    height: 52px;
+  }
+
   .case-hero {
     width: 100%;
     max-width: 432px;
