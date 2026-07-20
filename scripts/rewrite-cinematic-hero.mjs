@@ -265,7 +265,7 @@ const heroMarkup = `      <section className="hero" data-screen-label="Hero">
                   <h1 className="headline" style={{ maxWidth: "860px", textAlign: "left" }}>{tweaks.headline}</h1>
             </div>
             <div className="hero-copy">
-              <p className="lede">We build intelligent systems that learn from your experts and take on the most complex work your company depends on.</p>
+              <p className="lede">We build intelligent systems that learn from your experts and take on your most complex work - built for frontier companies in energy, space, and data centers.</p>
             </div>
           </div>
 

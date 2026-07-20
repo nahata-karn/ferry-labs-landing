@@ -38,7 +38,7 @@ test('preserves the current conversion content and booking destination', () => {
   );
   assert.match(
     template,
-    /We build intelligent systems that learn from your experts and take on the most complex work your company depends on\./
+    /We build intelligent systems that learn from your experts and take on your most complex work - built for frontier companies in energy, space, and data centers\./
   );
   assert.doesNotMatch(template, /Founded by <u>Stanford<\/u>/);
   assert.doesNotMatch(
