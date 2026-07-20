@@ -47,9 +47,8 @@ test('preserves the current conversion content and booking destination', () => {
   );
   assert.match(template, /Book a free consultation/);
   assert.match(template, /https:\/\/calendar\.app\.google\/t69X39w3jLLAKn3L7/);
-  assert.match(template, /San Francisco/);
+  assert.doesNotMatch(template, /className="meta-strip"/);
   assert.doesNotMatch(template, /New York/);
-  assert.match(template, /Ferry Labs, San Francisco/);
 });
 
 test('includes explicit desktop and mobile framing', () => {
