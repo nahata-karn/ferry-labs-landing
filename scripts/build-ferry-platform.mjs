@@ -85,7 +85,7 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
   <title>Ferry Platform — Ferry Labs</title>
   <meta name="description" content="${escapeHtml(page.intro)}">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="ferry-platform.css">
+  <link rel="stylesheet" href="ferry-platform.css?v=20260720">
 </head>
 <body>
   <header class="site-header">

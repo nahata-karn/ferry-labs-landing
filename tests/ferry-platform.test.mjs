@@ -62,6 +62,7 @@ test('defines responsive workflow, capability, and deployment diagrams', () => {
   assert.match(css, /\.process-rail\s*\{[\s\S]*grid-template-columns:/);
   assert.match(css, /\.includes-grid\s*\{[\s\S]*grid-template-columns:/);
   assert.match(css, /\.environment-copy\s*\{[\s\S]*grid-template-columns:/);
+  assert.match(css, /@media \(max-width:\s*1100px\)/);
   assert.match(css, /@media \(max-width:\s*760px\)/);
   assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)/);
 });
@@ -72,4 +73,31 @@ test('marks Ferry Platform as the current navigation destination', () => {
     /href="ferry-platform\.html" aria-current="page">Ferry Platform<\/a>/
   );
   assert.match(html, /href="case-studies\.html">Case Studies<\/a>/);
+});
+
+test('renders every supplied content block without rewriting it', () => {
+  const suppliedCopy = [
+    PLATFORM_PAGE.title,
+    PLATFORM_PAGE.intro,
+    ...PLATFORM_PAGE.customByDesign,
+    ...PLATFORM_PAGE.howWeWork.flatMap(([title, body]) => [title, body]),
+    ...PLATFORM_PAGE.includes.map(([copy]) => copy),
+    ...PLATFORM_PAGE.environments,
+    ...PLATFORM_PAGE.engagement,
+    PLATFORM_PAGE.closingTitle,
+    PLATFORM_PAGE.closingBody
+  ];
+
+  for (const copy of suppliedCopy) {
+    assert.ok(html.includes(copy), `missing supplied copy: ${copy}`);
+  }
+});
+
+test('is semantic, dependency-free, and readable without JavaScript', () => {
+  assert.equal((html.match(/<h1/g) ?? []).length, 1);
+  assert.equal((html.match(/<h2/g) ?? []).length, 6);
+  assert.doesNotMatch(html, /<script/i);
+  assert.doesNotMatch(html, /https?:\/\/(?!calendar\.app\.google)/i);
+  assert.match(html, /aria-current="page"/);
+  assert.match(html, /alt="A pixel-art satellite rises/);
 });

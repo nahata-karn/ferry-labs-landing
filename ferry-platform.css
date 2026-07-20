@@ -431,7 +431,7 @@ a {
   text-transform: uppercase;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .process-rail {
     grid-template-columns: 1fr;
     border-bottom: 0;
