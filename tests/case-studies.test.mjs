@@ -118,3 +118,18 @@ test('enhances static stories with accessible hash navigation', () => {
   assert.match(html, /data-case-link="spacecraft-engineering"/);
   assert.match(html, /tabindex="-1"/);
 });
+
+const landingOuter = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const landingMatch = landingOuter.match(
+  /<script type="__bundler\/template">\s*([\s\S]*?)\s*<\/script>/
+);
+assert.ok(landingMatch, 'landing-page embedded template exists');
+const landingTemplate = JSON.parse(landingMatch[1]);
+
+test('links to case studies without changing landing conversion copy', () => {
+  assert.match(landingTemplate, /label:\s*'Case Studies'/);
+  assert.match(landingTemplate, /href:\s*'case-studies\.html'/);
+  assert.match(landingTemplate, /AI for the companies building the physical future\./);
+  assert.match(landingTemplate, /Book a free consultation/);
+  assert.match(landingTemplate, /Ferry Labs, San Francisco/);
+});
