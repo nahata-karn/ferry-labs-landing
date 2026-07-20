@@ -11,26 +11,123 @@ if (start < 0 || end < 0) {
 }
 
 let template = JSON.parse(outer.slice(start + open.length, end).trim());
-const before = 'const NAV = [];';
-const after = `const NAV = [
-  { label: 'Case Studies', href: 'case-studies.html' }
+const desiredNav = `const NAV = [
+  { label: 'Case Studies', href: 'case-studies.html' },
+  { label: 'Ferry Platform', href: 'case-studies.html#selected-case-study' }
 ];`;
+template = template.replace(/const NAV = \[[\s\S]*?\];/, desiredNav);
 
-if (!template.includes(after)) {
-  if (!template.includes(before)) {
-    throw new Error('Empty NAV declaration not found');
-  }
-  template = template.replace(before, after);
+const navCssStart = template.indexOf('  .nav-wrap {');
+const navCssEnd = template.indexOf('  /* ---------- Cinematic cover hero ---------- */', navCssStart);
+if (navCssStart < 0 || navCssEnd < 0) {
+  throw new Error('Landing navigation CSS not found');
 }
 
-const mobileBefore = '    .nav-links { display: none; }';
-const mobileAfter = '    .nav-links { display: flex; gap: 18px; }';
-if (!template.includes(mobileAfter)) {
-  if (!template.includes(mobileBefore)) {
-    throw new Error('Mobile navigation rule not found');
+const navCss = `  .nav-wrap {
+    position: absolute;
+    z-index: 50;
+    top: 14px;
+    left: 50%;
+    width: min(760px, calc(100% - 24px));
+    transform: translateX(-50%);
   }
-  template = template.replace(mobileBefore, mobileAfter);
+  .nav {
+    width: 100%;
+    height: 64px;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 18px;
+    background: rgba(17,24,45,0.58);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 12px 38px rgba(2,5,20,0.24), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex: 0 0 auto;
+    font-family: 'Google Sans', 'Inter', sans-serif;
+  }
+  .brand-name { font-size: 16px; font-weight: 400; color: var(--white); }
+  .nav-links { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
+  .nav-link {
+    padding: 10px 4px;
+    color: rgba(255,255,255,0.76);
+    font-family: 'Google Sans', 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    transition: color .2s ease;
+  }
+  .nav-link:hover, .nav-link:focus-visible { color: var(--white); outline: none; }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 11px;
+    background: var(--orbit);
+    color: var(--white);
+    font-family: 'Google Sans', 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
+    transition: background .2s ease, transform .2s ease;
+  }
+  .nav-cta:hover, .nav-cta:focus-visible { background: #3a69ff; transform: translateY(-1px); outline: none; }
+  .nav-cta-short { display: none; }
+  @media (max-width: 540px) {
+    .nav-wrap { top: 8px; width: calc(100% - 16px); }
+    .nav { height: 54px; padding: 6px; gap: 8px; border-radius: 15px; }
+    .brand-name { display: none; }
+    .nav-links { gap: 8px; }
+    .nav-link { padding: 8px 1px; font-size: 11px; }
+    .nav-cta { padding: 10px 12px; font-size: 12px; }
+    .nav-cta-label { display: none; }
+    .nav-cta-short { display: inline; }
+  }
+
+`;
+template = template.slice(0, navCssStart) + navCss + template.slice(navCssEnd);
+
+const navMarkupStart = template.indexOf('      <div className="nav-wrap">');
+const navMarkupEnd = template.indexOf('\n\n      <section className="hero"', navMarkupStart);
+if (navMarkupStart < 0 || navMarkupEnd < 0) {
+  throw new Error('Landing navigation markup not found');
 }
+
+const navMarkup = `      <div className="nav-wrap">
+        <nav className="nav" aria-label="Primary">
+          <a className="brand" href="index.html" aria-label="Ferry Labs home">
+            <img src="ferry-logo.png" alt="" style={{ height: "34px", width: "auto", display: "block" }} />
+            <span className="brand-name">Ferry Labs</span>
+          </a>
+          <div className="nav-links">
+            {NAV.map((item) =>
+            <a key={item.label} className="nav-link" href={item.href}>{item.label}</a>
+            )}
+            <a className="nav-cta" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              <span className="nav-cta-label">Book a consultation</span>
+              <span className="nav-cta-short">Book a call</span>
+              <span aria-hidden>↗</span>
+            </a>
+          </div>
+        </nav>
+      </div>`;
+template = template.slice(0, navMarkupStart) + navMarkup + template.slice(navMarkupEnd);
+
+template = template.replace('    .nav-links { display: flex; gap: 18px; }', '    .nav-links { display: flex; gap: 14px; }');
+template = template.replace('    .nav { padding: 0 20px; }', '    .nav { padding: 7px; }');
+template = template.replace('    .nav { height: 56px; }', '    .nav { height: 54px; }');
+template = template.replace('    .hero-content { padding: 52px 20px 44px; }', '    .hero-content { padding: 84px 20px 44px; }');
 
 const serialized = JSON.stringify(template).replaceAll('</script>', '<\\/script>');
 writeFileSync(

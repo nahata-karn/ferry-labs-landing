@@ -93,7 +93,15 @@ export function renderCaseStudiesPage(studies = CASE_STUDIES) {
       <img src="ferry-logo.png" alt="" width="34" height="34">
       <span>Ferry Labs</span>
     </a>
-    <a class="header-link" href="case-studies.html" aria-current="page">Case Studies</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a class="header-link" href="case-studies.html" aria-current="page">Case Studies</a>
+      <a class="header-link" href="#selected-case-study">Ferry Platform</a>
+      <a class="nav-cta" href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">
+        <span class="nav-cta-label">Book a consultation</span>
+        <span class="nav-cta-short">Book a call</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </nav>
   </header>
   <main class="case-studies">
     <section class="reader" id="selected-case-study" aria-label="Selected case study">

@@ -58,14 +58,23 @@ a {
 
 .site-header {
   position: absolute;
-  inset: 0 0 auto;
+  top: 14px;
+  left: 50%;
   z-index: 10;
+  width: min(760px, calc(100% - 24px));
   height: 64px;
-  padding: 0 var(--content-pad);
+  padding: 7px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
+  gap: 18px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(17, 24, 45, 0.58);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 12px 38px rgba(2, 5, 20, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .brand {
@@ -73,6 +82,7 @@ a {
   align-items: center;
   gap: 10px;
   font-size: 17px;
+  flex: 0 0 auto;
 }
 
 .brand img {
@@ -80,7 +90,6 @@ a {
   height: 34px;
 }
 
-.header-link,
 .eyebrow,
 .workflow-number {
   text-transform: uppercase;
@@ -88,14 +97,43 @@ a {
   font-size: 11px;
 }
 
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
 .header-link {
-  color: var(--mist);
+  padding: 10px 4px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 14px;
+  letter-spacing: 0;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
 .header-link:hover,
 .header-link:focus-visible {
   color: var(--white);
+}
+
+.site-header .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 11px;
+  background: var(--orbit);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.site-header .nav-cta-short {
+  display: none;
 }
 
 .case-studies {
@@ -444,11 +482,38 @@ a {
   }
 
   .site-header {
-    height: 58px;
+    top: 8px;
+    width: calc(100% - 16px);
+    height: 54px;
+    padding: 6px;
+    gap: 8px;
+    border-radius: 15px;
+  }
+
+  .brand span {
+    display: none;
+  }
+
+  .site-nav {
+    gap: 8px;
   }
 
   .header-link {
-    font-size: 10px;
+    padding: 8px 1px;
+    font-size: 11px;
+  }
+
+  .site-header .nav-cta {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .site-header .nav-cta-label {
+    display: none;
+  }
+
+  .site-header .nav-cta-short {
+    display: inline;
   }
 
   .case-studies {

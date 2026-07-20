@@ -90,6 +90,8 @@ test('renders accessible local imagery and conversion links', () => {
   assert.match(html, /alt="A pixel-art spacecraft stands/);
   assert.match(html, /href="https:\/\/calendar\.app\.google\/t69X39w3jLLAKn3L7"/);
   assert.match(html, /Book a free consultation/);
+  assert.match(html, />Ferry Platform<\/a>/);
+  assert.match(html, /class="nav-cta"[\s\S]*Book a consultation[\s\S]*Book a call/);
 });
 
 test('keeps every story section and bullet visible in static markup', () => {
@@ -118,7 +120,7 @@ test('uses restrained local visual enhancement', () => {
   assert.match(css, /\.icon-source/);
   assert.match(css, /\.icon-geometry/);
   assert.match(css, /\.impact-list/);
-  assert.doesNotMatch(css, /backdrop-filter/);
+  assert.match(css, /backdrop-filter:\s*blur\(18px\)/);
   assert.doesNotMatch(css, /animation:\s*[^n]/);
 });
 
@@ -145,6 +147,9 @@ const landingTemplate = JSON.parse(landingMatch[1]);
 test('links to case studies without changing landing conversion copy', () => {
   assert.match(landingTemplate, /label:\s*'Case Studies'/);
   assert.match(landingTemplate, /href:\s*'case-studies\.html'/);
+  assert.match(landingTemplate, /label:\s*'Ferry Platform'/);
+  assert.match(landingTemplate, /className="nav-cta"/);
+  assert.match(landingTemplate, /nav-cta-short">Book a call/);
   assert.match(landingTemplate, /AI for the companies building the physical future\./);
   assert.match(landingTemplate, /Book a free consultation/);
   assert.match(landingTemplate, /Ferry Labs, San Francisco/);
