@@ -30,10 +30,8 @@ const renderPanel = (study) => `
     <figure class="case-hero">
       <img src="${escapeHtml(study.image)}" alt="${escapeHtml(study.imageAlt)}"
            width="2048" height="2048">
-      <figcaption>${escapeHtml(study.number)} / 02</figcaption>
     </figure>
     <header class="story-header">
-      <p class="eyebrow">Case study ${study.number}</p>
       <h2>${escapeHtml(study.title)}</h2>
     </header>
     <section class="story-section">
@@ -71,7 +69,8 @@ export function renderCaseStudiesPage(studies = CASE_STUDIES) {
   const switcher = studies.map((study) => `
     <a href="#${escapeHtml(study.slug)}" class="case-switch"
        data-case-link="${escapeHtml(study.slug)}">
-      <span>${study.number}</span>${escapeHtml(study.title)}
+      <img src="${escapeHtml(study.image)}" alt="" width="2048" height="2048">
+      <span>${escapeHtml(study.title)}</span>
     </a>`).join('\n');
 
   return `<!doctype html>

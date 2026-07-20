@@ -71,7 +71,12 @@ test('starts directly with the detailed reader and side selector', () => {
   assert.doesNotMatch(html, /class="case-card/);
   assert.doesNotMatch(html, /<header class="page-intro">/);
   assert.doesNotMatch(html, />Case Studies<\/h1>/);
+  assert.doesNotMatch(html, /Case study 0[12]/);
+  assert.match(html, /class="case-switch"[\s\S]*<img src="assets\/case-studies\/transmission-infrastructure\.png"/);
   assert.match(css, /\.reader\s*\{[\s\S]*grid-template-columns:/);
+  assert.match(css, /\.case-switch img\s*\{[\s\S]*height:\s*64px/);
+  assert.match(css, /\.case-hero\s*\{[\s\S]*max-width|\.case-hero\s*\{[\s\S]*width:\s*min\(100%,\s*432px/);
+  assert.match(css, /\.case-hero\s*\{[\s\S]*margin:\s*0 auto/);
 });
 
 test('renders accessible local imagery and conversion links', () => {
