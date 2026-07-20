@@ -71,7 +71,7 @@ const navCss = `  @view-transition {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 18px;
+    gap: 12px;
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 18px;
     background: rgba(17,24,45,0.58);
@@ -95,7 +95,7 @@ const navCss = `  @view-transition {
     height: auto !important;
     display: block;
   }
-  .nav-links { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex: 1; min-width: 0; }
+  .nav-links { display: flex; align-items: center; justify-content: flex-start; gap: 12px; flex: 1; min-width: 0; }
   .nav-link {
     padding: 10px 4px;
     color: rgba(255,255,255,0.76);

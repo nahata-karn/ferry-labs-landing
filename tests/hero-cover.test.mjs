@@ -119,7 +119,7 @@ test('renders the Ferry logo as a standalone sticky navigation button', () => {
   assert.match(template, /\.brand\s*\{[\s\S]*width:\s*40px/);
   assert.match(template, /src="ferry-logo-mark\.png"/);
   assert.doesNotMatch(template, /mix-blend-mode:\s*screen/);
-  assert.match(template, /\.nav-links\s*\{[\s\S]*gap:\s*18px/);
+  assert.match(template, /\.nav-links\s*\{[\s\S]*justify-content:\s*flex-start[\s\S]*gap:\s*12px/);
   assert.match(template, /\.nav-link\s*\{[\s\S]*font-family:\s*'Geist Pixel'/);
 });
 
