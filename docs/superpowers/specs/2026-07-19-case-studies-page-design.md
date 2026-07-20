@@ -1,13 +1,13 @@
 # Ferry Labs Case Studies Page Design
 
-**Status:** Approved direction; awaiting final case-study copy and images
+**Status:** Approved direction and content package received
 **Date:** 2026-07-19
 
 ## Goal
 
 Create a dedicated Ferry Labs case-studies page that turns two customer stories into visual, credible proof of the company’s ability to build intelligent systems for the physical economy. The page should feel cinematic and editorial, remain consistent with the existing landing page, and end each story with the existing consultation CTA.
 
-The page is a credibility and conversion surface, not a portfolio archive. It should make the operational problem, Ferry-built system, and verified outcome easy to understand without overloading the reader with decoration.
+The page is a credibility and conversion surface, not a portfolio archive. It should make the supplied operational problem, Ferry-platform description, and impact copy easy to understand without overloading the reader with decoration.
 
 ## Selected Interaction Model
 
@@ -36,7 +36,7 @@ This hybrid is preferred over separate detail pages because it keeps two early s
 - Eyebrow: `Selected work`.
 - Short headline that frames the stories around intelligent systems for the physical future.
 - One concise paragraph explaining that the stories cover the operational problem, the system Ferry built, and the resulting change.
-- No generic customer-logo wall or unsupported traction claims.
+- No generic customer-logo wall.
 
 ### Visual cards
 
@@ -58,13 +58,13 @@ The reader uses this order:
 
 1. **Hero image** — supplied image with meaningful alt text and a restrained navy gradient for text contrast.
 2. **Story header** — industry, engagement type, title, and concise summary.
-3. **Impact row** — zero to three verified metrics or outcome statements. Omit this module if the supplied content has no defensible quantified results.
+3. **Impact row** — the supplied impact statements, displayed without changing their wording.
 4. **The challenge** — the high-value operational problem and why it mattered.
 5. **What Ferry built** — the system, agents, workflow, or knowledge layer created.
 6. **How it works** — a restrained visual explanation of the workflow using three to five labeled steps.
-7. **The result** — verified outcomes, operator change, and business significance.
+7. **Impact** — the exact supplied impact bullets, elevated visually at the end of the story.
 8. **Optional evidence quote** — only when the user supplies an attributable, approved quotation.
-9. **CTA** — a visual end-cap linking to the existing consultation booking destination.
+9. **CTA** — a visual end-cap using the existing “Book a free consultation” wording and booking destination.
 
 ## Visual System
 
@@ -86,7 +86,7 @@ The gallery should feel visual before it feels informational. The reader should 
 Visuals are limited to elements that clarify the case study:
 
 - one supplied hero image per story;
-- up to three impact tiles when claims are verified;
+- impact tiles using the exact supplied impact statements;
 - one compact workflow diagram with three to five steps;
 - a small inline SVG icon set for challenge, system, workflow, evidence, and outcome concepts;
 - optional pull quote or evidence callout;
@@ -121,11 +121,7 @@ The implementation stores both stories in one explicit data collection with this
     title: string,
     body: string
   }>,
-  outcomes: Array<{
-    value: string,
-    label: string,
-    evidenceStatus: 'verified' | 'reported' | 'qualitative'
-  }>,
+  outcomes: string[],
   result: {
     heading: string,
     paragraphs: string[]
@@ -143,7 +139,7 @@ The implementation stores both stories in one explicit data collection with this
 }
 ```
 
-The `evidenceStatus` field is editorial metadata and is not shown as a badge. It prevents reported or qualitative claims from being styled as measured results. Numeric claims require verified source support. Empty optional modules are omitted rather than filled with generic copy.
+All prose-bearing fields are copied directly from the supplied screenshots. The data model exists to support layout and interaction; it does not transform or interpret the copy.
 
 ## Content Intake
 
@@ -156,13 +152,39 @@ For each of the two stories, the user will supply:
 - challenge narrative;
 - what Ferry built;
 - three to five workflow steps;
-- outcomes, with a note identifying which numbers are verified;
+- outcomes;
 - optional approved quotation and attribution;
 - hero image and meaningful image description;
 - any confidentiality limits or language that must not appear;
 - preferred CTA variation, if different from the existing consultation CTA.
 
-Ferry Labs may strengthen structure, headings, scannability, diagrams, and iconography, but must not invent customers, metrics, testimonials, technical claims, or business outcomes.
+The supplied copy is immutable. Implementation may improve layout, hierarchy, scannability, diagrams, iconography, and responsive presentation, but must not rewrite, soften, qualify, omit, or add to the supplied wording.
+
+## Final Content Package
+
+### Case study 01 — Energy transmission
+
+- **Title:** “Scaling a $4B project portfolio without scaling senior headcount.”
+- **Image source:** `u8954488552_energy_transmission_infrastructure_-_optimistic_-_c7de3e84-4bac-49e0-a5fe-1eaeb1cdafff_3.png`.
+- **Shipped asset:** `assets/case-studies/transmission-infrastructure.png`.
+- **Image dimensions:** 2048×2048.
+- **Image SHA-256:** `2a179d553a265d15611d499ebdf4b4a19c8bac206d614e8bd05996915b1d1ecc`.
+- **Alt text:** “A pixel-art transmission network stretches across a mountainous blue landscape.”
+- **Copy source:** `Screenshot 2026-07-19 at 11.01.44 PM.png`.
+- **Copy rule:** reproduce the screenshot wording exactly, including `$4B`, `10x`, and `$XXXM`.
+
+### Case study 02 — Spacecraft engineering
+
+- **Title:** “Making spacecraft engineering move at production speed.”
+- **Image source:** `u8954488552_satellite_company_launch_equipment_-_make_image_o_075b8062-4153-4ca7-b1fc-bdc255f83ee2_1.png`.
+- **Shipped asset:** `assets/case-studies/spacecraft-engineering.png`.
+- **Image dimensions:** 2048×2048.
+- **Image SHA-256:** `fcd79c77a9def25567a2610be4299f7bfee6254599dd942be3f096d8d4f418e7`.
+- **Alt text:** “A pixel-art spacecraft stands beside a snow-covered mountain beneath a blue sky.”
+- **Copy source:** `Screenshot 2026-07-19 at 11.02.23 PM.png`.
+- **Copy rule:** reproduce the screenshot wording exactly, including `$2.3B`.
+
+No copy review, evidence-status labeling, editorial qualification, or content substitution is part of implementation. Visual modules must use the existing supplied sentences and bullets as their labels and body text.
 
 ## Page State and Data Flow
 
@@ -212,7 +234,7 @@ Ferry Labs may strengthen structure, headings, scannability, diagrams, and icono
 ## Error and Edge-Case Handling
 
 - Missing image: show the existing navy fallback with the case number and title; preserve readable text.
-- Missing optional metrics or quote: omit the complete module.
+- No quote module is rendered because neither supplied case study includes a quote.
 - Long title: allow natural wrapping without reducing below the defined mobile type scale.
 - Unknown hash: select the first story and normalize the URL.
 - More than two future stories: keep the data model extensible, but do not build pagination, search, filters, or a CMS now.
