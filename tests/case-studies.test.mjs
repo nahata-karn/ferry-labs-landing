@@ -105,3 +105,16 @@ test('uses restrained local visual enhancement', () => {
   assert.doesNotMatch(css, /backdrop-filter/);
   assert.doesNotMatch(css, /animation:\s*[^n]/);
 });
+
+const behavior = readFileSync(new URL('../case-studies.js', import.meta.url), 'utf8');
+
+test('enhances static stories with accessible hash navigation', () => {
+  assert.match(behavior, /history\.pushState/);
+  assert.match(behavior, /addEventListener\('popstate'/);
+  assert.match(behavior, /aria-current/);
+  assert.match(behavior, /scrollIntoView/);
+  assert.match(behavior, /prefers-reduced-motion/);
+  assert.match(html, /data-case-link="energy-transmission"/);
+  assert.match(html, /data-case-link="spacecraft-engineering"/);
+  assert.match(html, /tabindex="-1"/);
+});
