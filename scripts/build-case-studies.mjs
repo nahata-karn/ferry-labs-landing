@@ -61,7 +61,7 @@ const renderPanel = (study) => `
     </section>
     <aside class="case-cta">
       <a href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">
-        Book a free consultation <span aria-hidden="true">↗</span>
+        Start deployment <span aria-hidden="true">↗</span>
       </a>
     </aside>
   </article>`;

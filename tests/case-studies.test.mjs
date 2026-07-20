@@ -89,7 +89,7 @@ test('renders accessible local imagery and conversion links', () => {
   assert.match(html, /alt="A pixel-art transmission network/);
   assert.match(html, /alt="A pixel-art spacecraft stands/);
   assert.match(html, /href="https:\/\/calendar\.app\.google\/t69X39w3jLLAKn3L7"/);
-  assert.match(html, /Book a free consultation/);
+  assert.match(html, /Start deployment\s+<span aria-hidden="true">↗<\/span>/);
   assert.match(html, />Ferry Platform<\/a>/);
   assert.match(html, /class="nav-cta"[\s\S]*Start deployment/);
 });
@@ -158,6 +158,7 @@ test('links to case studies without changing landing conversion copy', () => {
   assert.match(landingTemplate, /nav-cta-short">Start deployment/);
   assert.match(landingTemplate, /AI for the companies building the physical future\./);
   assert.match(landingTemplate, /"ctaLabel": "Start deployment"/);
+  assert.match(landingTemplate, /<button className="cta-tile primary"[\s\S]*?>Start deployment<\/span>/);
   assert.match(landingTemplate, /className="cta-tile secondary" href="case-studies\.html"/);
   assert.match(landingTemplate, /width:\s*240px/);
   assert.match(landingTemplate, /Ferry Labs, San Francisco/);

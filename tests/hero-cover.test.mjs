@@ -46,6 +46,7 @@ test('preserves the current conversion content and booking destination', () => {
     /Customers include frontier companies in space, data centers, robotics, and energy\./
   );
   assert.match(template, /"ctaLabel": "Start deployment"/);
+  assert.match(template, /<button className="cta-tile primary"[\s\S]*?>Start deployment<\/span>/);
   assert.match(template, /className="cta-tile secondary" href="case-studies\.html"/);
   assert.match(template, /https:\/\/calendar\.app\.google\/t69X39w3jLLAKn3L7/);
   assert.match(template, /className="meta-strip"/);

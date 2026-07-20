@@ -141,7 +141,7 @@ if (heroCtaStart < 0 || heroCtaEnd < 0) {
 
 const heroCtaMarkup = `          <div className="cta-tiles">
             <button className="cta-tile primary" onClick={openBooking}>
-              <span style={{ fontSize: "16px", fontFamily: "'Google Sans', 'Inter', sans-serif" }}>{tweaks.ctaLabel}</span>
+              <span style={{ fontSize: "16px", fontFamily: "'Google Sans', 'Inter', sans-serif" }}>Start deployment</span>
               <span className="tile-arrow" aria-hidden>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="6" y1="18" x2="18" y2="6" />
