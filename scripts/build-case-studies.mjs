@@ -55,7 +55,9 @@ const renderPanel = (study) => `
     </section>
     <section class="story-section impact-section">
       <h3>Impact</h3>
-      ${renderBullets(study.impact, 'impact-list')}
+      <div class="story-copy">
+        ${renderBullets(study.impact, 'impact-list')}
+      </div>
     </section>
     <aside class="case-cta">
       <a href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer">
