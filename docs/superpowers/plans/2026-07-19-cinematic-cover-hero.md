@@ -38,7 +38,7 @@
 - Consumes: the JSON string inside `<script type="__bundler/template">` in `index.html` and the user-supplied PNG at `/var/folders/6r/d7w9jvv15mx46hkm93ttf0qh0000gn/T/codex-clipboard-a01be8b3-b833-4a06-ac6c-a357ccd987ac.png`.
 - Produces: a local `/cover-hero.png` asset, `.hero-cover-art` image layer, `.hero-content` content container, responsive cover CSS, and an `index.html` template with no `FloorGrid` code or `.floor-grid` markup.
 
-- [ ] **Step 1: Write the failing regression test**
+- [x] **Step 1: Write the failing regression test**
 
 Create `tests/hero-cover.test.mjs`:
 
@@ -100,15 +100,15 @@ test('includes explicit desktop and mobile framing', () => {
   assert.match(template, /object-position:\s*52% center/);
 });
 
-test('ships the expected 2048 by 1536 PNG asset', () => {
+test('ships the expected 2544 by 1904 PNG asset', () => {
   const png = readFileSync(new URL('../cover-hero.png', import.meta.url));
   assert.equal(png.toString('ascii', 1, 4), 'PNG');
-  assert.equal(png.readUInt32BE(16), 2048);
-  assert.equal(png.readUInt32BE(20), 1536);
+  assert.equal(png.readUInt32BE(16), 2544);
+  assert.equal(png.readUInt32BE(20), 1904);
 });
 ```
 
-- [ ] **Step 2: Run the test and verify the intended RED state**
+- [x] **Step 2: Run the test and verify the intended RED state**
 
 Run:
 
@@ -118,7 +118,7 @@ node --test tests/hero-cover.test.mjs
 
 Expected: FAIL because `className="hero-cover-art"` is absent, `FloorGrid` is still present, and `cover-hero.png` does not exist.
 
-- [ ] **Step 3: Add the exact supplied cover asset**
+- [x] **Step 3: Add the exact supplied cover asset**
 
 Run:
 
@@ -126,9 +126,9 @@ Run:
 cp /var/folders/6r/d7w9jvv15mx46hkm93ttf0qh0000gn/T/codex-clipboard-a01be8b3-b833-4a06-ac6c-a357ccd987ac.png cover-hero.png
 ```
 
-Expected: `cover-hero.png` is a 2048×1536 PNG and is byte-identical to the supplied image.
+Expected: `cover-hero.png` is a 2544×1904 PNG and is byte-identical to the supplied image.
 
-- [ ] **Step 4: Create the deterministic embedded-template rewrite**
+- [x] **Step 4: Create the deterministic embedded-template rewrite**
 
 Create `scripts/rewrite-cinematic-hero.mjs`:
 
@@ -377,16 +377,21 @@ template = replaceBetween(
   'hero markup'
 );
 
+const serializedTemplate = JSON.stringify(template).replace(
+  /<\/script>/gi,
+  '<\\/script>'
+);
+
 const updated =
   outer.slice(0, payloadStart) +
-  JSON.stringify(template) +
+  serializedTemplate +
   '\n  ' +
   outer.slice(payloadEnd);
 
 writeFileSync(indexPath, updated);
 ```
 
-- [ ] **Step 5: Run the rewrite against the generated page**
+- [x] **Step 5: Run the rewrite against the generated page**
 
 Run:
 
@@ -396,7 +401,7 @@ node scripts/rewrite-cinematic-hero.mjs index.html
 
 Expected: exit 0; the embedded template contains the cinematic hero markup and no `FloorGrid` component.
 
-- [ ] **Step 6: Run the regression test and verify GREEN**
+- [x] **Step 6: Run the regression test and verify GREEN**
 
 Run:
 
@@ -406,7 +411,7 @@ node --test tests/hero-cover.test.mjs
 
 Expected: 5 tests pass, 0 fail.
 
-- [ ] **Step 7: Check source integrity and stage only implementation files**
+- [x] **Step 7: Check source integrity and stage only implementation files**
 
 Run:
 
@@ -417,7 +422,7 @@ git status --short
 
 Expected: no whitespace errors. Modified/created tracked work is limited to `index.html`, `cover-hero.png`, `tests/hero-cover.test.mjs`, `scripts/rewrite-cinematic-hero.mjs`, and this plan; `.superpowers/` remains an untracked local brainstorming artifact and is not staged.
 
-- [ ] **Step 8: Commit the automated implementation**
+- [x] **Step 8: Commit the automated implementation**
 
 ```bash
 git add index.html cover-hero.png tests/hero-cover.test.mjs scripts/rewrite-cinematic-hero.mjs docs/superpowers/plans/2026-07-19-cinematic-cover-hero.md
@@ -466,7 +471,7 @@ Set the viewport to 390×844, reload, and verify:
 
 - [ ] **Step 4: Check browser logs and DOM contracts**
 
-Verify the browser console contains no errors or warnings introduced by the change. Confirm exactly one hero CTA is present, its text is “Book a free consultation,” its image source ends in `/cover-hero.png`, its image natural dimensions are 2048×1536, and the hero contains no `canvas`.
+Verify the browser console contains no errors or warnings introduced by the change. Confirm exactly one hero CTA is present, its text is “Book a free consultation,” its image source ends in `/cover-hero.png`, its image natural dimensions are 2544×1904, and the hero contains no `canvas`.
 
 - [ ] **Step 5: If visual tuning is needed, update the rewrite source first**
 

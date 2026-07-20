@@ -27,7 +27,7 @@ The page remains a dependency-free static site delivered from `index.html`.
 
 ## Artwork Treatment
 
-Copy the supplied PNG into the repository as `cover-hero.png` and render it as an image inside the hero rather than embedding another large binary payload into `index.html`.
+Copy the supplied 2544×1904 PNG into the repository as `cover-hero.png` and render it as an image inside the hero rather than embedding another large binary payload into `index.html`.
 
 The image layer uses `object-fit: cover` and fills the hero. Desktop positioning prioritizes the central city while keeping the foreground astronauts visible. Mobile positioning shifts the focal point to retain the astronauts and central architecture despite the narrower crop.
 
