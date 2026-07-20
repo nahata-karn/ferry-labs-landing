@@ -29,30 +29,6 @@ const iconPaths = {
 
 const pixelIcon = (name) => `<svg class="pixel-icon pixel-icon-${name}" viewBox="0 0 24 24" aria-hidden="true" shape-rendering="crispEdges">${iconPaths[name]}</svg>`;
 
-const customSchematic = `<svg class="system-schematic" viewBox="0 0 520 240" aria-hidden="true" shape-rendering="crispEdges">
-  <g class="schematic-muted">
-    <rect x="24" y="82" width="104" height="76"/>
-    <rect x="208" y="56" width="104" height="128"/>
-    <rect x="392" y="82" width="104" height="76"/>
-  </g>
-  <g class="schematic-accent">
-    <rect x="44" y="102" width="16" height="16"/><rect x="76" y="102" width="32" height="16"/><rect x="44" y="134" width="64" height="8"/>
-    <rect x="228" y="80" width="64" height="12"/><rect x="228" y="108" width="64" height="12"/><rect x="228" y="136" width="64" height="12"/>
-    <rect x="412" y="102" width="64" height="8"/><rect x="412" y="126" width="24" height="16"/><rect x="452" y="126" width="24" height="16"/>
-    <path d="M128 116h48v-12h16v32h-16v-12h-48zM312 116h48v-12h16v32h-16v-12h-48z"/>
-  </g>
-</svg>`;
-
-const environmentSchematic = `<svg class="system-schematic environment-schematic" viewBox="0 0 760 260" aria-hidden="true" shape-rendering="crispEdges">
-  <g class="schematic-muted"><rect x="304" y="24" width="152" height="68"/><rect x="40" y="160" width="252" height="72"/><rect x="468" y="160" width="252" height="72"/></g>
-  <g class="schematic-accent">
-    <rect x="328" y="44" width="104" height="12"/><rect x="344" y="68" width="72" height="8"/>
-    <path d="M372 92h16v28h-96v16h-16v-32h80V92zM388 92h16v12h80v32h-16v-16h-80z"/>
-    <rect x="64" y="184" width="32" height="24"/><rect x="112" y="184" width="64" height="8"/><rect x="112" y="200" width="112" height="8"/>
-    <rect x="492" y="184" width="32" height="24"/><rect x="540" y="184" width="64" height="8"/><rect x="540" y="200" width="112" height="8"/>
-  </g>
-</svg>`;
-
 const engagementSchematic = `<svg class="system-schematic engagement-schematic" viewBox="0 0 520 240" aria-hidden="true" shape-rendering="crispEdges">
   <g class="schematic-muted"><rect x="36" y="44" width="152" height="152"/><rect x="332" y="44" width="152" height="152"/></g>
   <g class="schematic-accent">
@@ -111,11 +87,13 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
     </section>
 
     <section class="editorial-section custom-section">
-      <div>
+      <div class="section-copy">
         <h2>Custom by design</h2>
         ${paragraphs(page.customByDesign)}
       </div>
-      <div class="custom-schematic">${customSchematic}</div>
+      <figure class="section-image section-image-custom">
+        <img src="assets/platform/custom-by-design.png" alt="" loading="lazy">
+      </figure>
     </section>
 
     <section class="editorial-section process-section">
@@ -131,9 +109,13 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
     </section>
 
     <section class="editorial-section environment-section">
-      <h2>Your environment or ours.</h2>
-      <div class="environment-diagram">${environmentSchematic}</div>
-      <div class="environment-copy">${paragraphs(page.environments)}</div>
+      <figure class="section-image section-image-environment">
+        <img src="assets/platform/environment.png" alt="" loading="lazy">
+      </figure>
+      <div class="environment-copy">
+        <h2>Your environment or ours.</h2>
+        ${paragraphs(page.environments)}
+      </div>
     </section>
 
     <section class="editorial-section engagement-section">

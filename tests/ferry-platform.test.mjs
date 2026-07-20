@@ -32,6 +32,20 @@ test('ships the supplied platform image byte-for-byte', () => {
   );
 });
 
+test('ships the supplied custom and environment artwork byte-for-byte', () => {
+  const environment = readFileSync(
+    new URL('../assets/platform/environment.png', import.meta.url)
+  );
+  const custom = readFileSync(
+    new URL('../assets/platform/custom-by-design.png', import.meta.url)
+  );
+
+  assert.equal(environment.toString('ascii', 1, 4), 'PNG');
+  assert.equal(custom.toString('ascii', 1, 4), 'PNG');
+  assert.equal(sha256(environment), '0ca7a56c7cb75ae89186327d885395176ea9f6f5cd1ffc3139b107b1bdbd37af');
+  assert.equal(sha256(custom), '949e1a8cd7b770735f3fbbf439303e8370c34f171fae28e640473702ff383a73');
+});
+
 test('renders the image before the single page heading', () => {
   const html = readFileSync(new URL('../ferry-platform.html', import.meta.url), 'utf8');
   assert.equal((html.match(/<h1/g) ?? []).length, 1);
@@ -58,10 +72,12 @@ test('keeps the opening image square, centered, and uncropped', () => {
   assert.match(css, /\.platform-hero-image\s*\{[\s\S]*margin:\s*0 auto/);
 });
 
-test('defines responsive workflow, capability, and deployment diagrams', () => {
+test('defines responsive workflow, capability, and artwork layouts', () => {
   assert.match(css, /\.process-rail\s*\{[\s\S]*grid-template-columns:/);
   assert.match(css, /\.includes-grid\s*\{[\s\S]*grid-template-columns:/);
-  assert.match(css, /\.environment-copy\s*\{[\s\S]*grid-template-columns:/);
+  assert.match(css, /\.environment-section\s*,[\s\S]*grid-template-columns:/);
+  assert.match(css, /\.section-image img\s*\{[\s\S]*object-fit:\s*contain/);
+  assert.doesNotMatch(css, /environment-diagram|custom-schematic/);
   assert.match(css, /@media \(max-width:\s*1100px\)/);
   assert.match(css, /@media \(max-width:\s*760px\)/);
   assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)/);
@@ -91,6 +107,13 @@ test('renders every supplied content block without rewriting it', () => {
   for (const copy of suppliedCopy) {
     assert.ok(html.includes(copy), `missing supplied copy: ${copy}`);
   }
+});
+
+test('uses supplied artwork in place of the custom and environment diagrams', () => {
+  assert.match(html, /src="assets\/platform\/custom-by-design\.png"/);
+  assert.match(html, /src="assets\/platform\/environment\.png"/);
+  assert.doesNotMatch(html, /class="custom-schematic"/);
+  assert.doesNotMatch(html, /class="environment-diagram"/);
 });
 
 test('is semantic, dependency-free, and readable without JavaScript', () => {
