@@ -120,23 +120,23 @@ git commit -m "Update hero physical future positioning"
 - Consumes: the new `TWEAK_DEFAULTS.headline`, single `.lede` paragraph, and existing video hero.
 - Produces: verified desktop and mobile text wrapping without overlap or overflow.
 
-- [ ] **Step 1: Reload the feature preview**
+- [x] **Step 1: Reload the feature preview**
 
 Reload `http://127.0.0.1:4174/` after the static-file changes.
 
-- [ ] **Step 2: Inspect desktop at 1440×900**
+- [x] **Step 2: Inspect desktop at 1440×900**
 
 Confirm the exact headline and paragraph are visible, the headline wraps naturally within the existing 680 px maximum, the CTA remains below the paragraph, the video continues playing muted, and the page has no horizontal overflow.
 
-- [ ] **Step 3: Inspect mobile at 390×844**
+- [x] **Step 3: Inspect mobile at 390×844**
 
 Confirm both exact strings fit within the 350 px content width, the headline, paragraph, and CTA do not overlap, the footer follows the hero, the video remains visible, and there is no horizontal overflow.
 
-- [ ] **Step 4: Check DOM and browser logs**
+- [x] **Step 4: Check DOM and browser logs**
 
 Confirm the hero contains one heading, one supporting paragraph, one CTA, one video, one fallback image, no canvas, and no new console errors or warnings. The pre-existing Babel standalone development warning is allowed.
 
-- [ ] **Step 5: Run final verification**
+- [x] **Step 5: Run final verification**
 
 Run:
 
