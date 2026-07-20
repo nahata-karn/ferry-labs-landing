@@ -49,7 +49,7 @@ const renderPanel = (study) => `
       </div>
     </section>
     <section class="story-section platform-section">
-      <h3>The Ferry platform</h3>
+      <h3>Ferry platform</h3>
       <div class="story-copy">
         <p>${escapeHtml(study.platform.intro)}</p>
       </div>

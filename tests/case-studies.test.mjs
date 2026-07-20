@@ -86,7 +86,7 @@ test('renders accessible local imagery and conversion links', () => {
 test('keeps every story section and bullet visible in static markup', () => {
   assert.equal((html.match(/>Company<\/h3>/g) ?? []).length, 2);
   assert.equal((html.match(/>The problem<\/h3>/g) ?? []).length, 2);
-  assert.equal((html.match(/>The Ferry platform<\/h3>/g) ?? []).length, 2);
+  assert.equal((html.match(/>Ferry platform<\/h3>/g) ?? []).length, 2);
   assert.equal((html.match(/>Impact<\/h3>/g) ?? []).length, 2);
   assert.match(html, /Find and validate evidence from previous projects/);
   assert.match(html, /Preserve design intent across iterations/);
