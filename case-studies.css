@@ -385,20 +385,20 @@ a {
 }
 
 .case-cta {
-  margin-top: 48px;
-  padding: clamp(28px, 5vw, 60px);
-  background: var(--orbit);
+  margin-top: 36px;
 }
 
 .case-cta a {
-  width: 100%;
-  display: flex;
+  width: fit-content;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  font-family: 'Geist Pixel', 'Google Sans', sans-serif;
-  font-size: clamp(28px, 4vw, 54px);
-  line-height: 1;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--orbit);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
 }
 
 .site-footer {

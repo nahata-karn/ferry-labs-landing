@@ -80,6 +80,7 @@ test('starts directly with the detailed reader and side selector', () => {
   assert.match(css, /\.case-hero\s*\{[\s\S]*max-width|\.case-hero\s*\{[\s\S]*width:\s*min\(100%,\s*432px/);
   assert.match(css, /\.case-hero\s*\{[\s\S]*margin:\s*0 auto/);
   assert.match(css, /\.story-header h2\s*\{[\s\S]*text-align:\s*center/);
+  assert.match(css, /\.case-cta a\s*\{[\s\S]*font-size:\s*16px/);
 });
 
 test('renders accessible local imagery and conversion links', () => {
