@@ -30,7 +30,7 @@
 - Consumes: the current `.hero`, `.hero-cover-art`, `.hero-content`, and `cover-hero.png` contracts.
 - Produces: `.hero-cover-video`, `cover-hero.mp4`, and a native video element whose fallback remains `cover-hero.png`.
 
-- [ ] **Step 1: Write the failing video contract tests**
+- [x] **Step 1: Write the failing video contract tests**
 
 Add `sourceVideoPath` and these assertions to `tests/hero-cover.test.mjs`:
 
@@ -61,7 +61,7 @@ test('ships the supplied MP4 byte for byte', () => {
 });
 ```
 
-- [ ] **Step 2: Run the test and confirm the RED state**
+- [x] **Step 2: Run the test and confirm the RED state**
 
 Run:
 
@@ -71,11 +71,11 @@ node --test tests/hero-cover.test.mjs
 
 Expected: the new video element and MP4 assertions fail while the existing five tests continue to pass.
 
-- [ ] **Step 3: Copy the supplied video asset**
+- [x] **Step 3: Copy the supplied video asset**
 
 Copy `/Users/karn/Downloads/u8954488552_create_a_futuristic_image_of_astronauts_building__e595c0d8-9da3-4f54-84c6-366e8c901297_0.mp4` to repository-root `cover-hero.mp4`, then verify the source and destination are byte-identical with `cmp -s`.
 
-- [ ] **Step 4: Add the video CSS to the rewrite source**
+- [x] **Step 4: Add the video CSS to the rewrite source**
 
 Update the media selector and add the reduced-motion rule in `scripts/rewrite-cinematic-hero.mjs`:
 
@@ -105,7 +105,7 @@ Update the media selector and add the reduced-motion rule in `scripts/rewrite-ci
 
 Repeat the combined responsive selector at the 540 px breakpoint.
 
-- [ ] **Step 5: Add the video markup to the rewrite source**
+- [x] **Step 5: Add the video markup to the rewrite source**
 
 Keep the image first, then place the video immediately before `.hero-content`:
 
@@ -129,11 +129,11 @@ Keep the image first, then place the video immediately before `.hero-content`:
         </video>
 ```
 
-- [ ] **Step 6: Synchronize the embedded template mechanically**
+- [x] **Step 6: Synchronize the embedded template mechanically**
 
 Decode the JSON inside `script[type="__bundler/template"]`, replace the exact current media CSS and image-only JSX with the updated strings from `scripts/rewrite-cinematic-hero.mjs`, serialize the JSON while escaping closing script tags as `<\\/script>`, and write the payload back to `index.html`. Do not edit unrelated generated content.
 
-- [ ] **Step 7: Run the GREEN checks**
+- [x] **Step 7: Run the GREEN checks**
 
 Run:
 
@@ -145,7 +145,7 @@ git diff --check
 
 Expected: 7 tests pass, 0 fail; syntax and whitespace checks exit 0.
 
-- [ ] **Step 8: Commit the video implementation**
+- [x] **Step 8: Commit the video implementation**
 
 ```bash
 git add cover-hero.mp4 index.html scripts/rewrite-cinematic-hero.mjs tests/hero-cover.test.mjs docs/superpowers/plans/2026-07-19-video-cover-hero.md

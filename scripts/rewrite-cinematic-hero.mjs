@@ -50,16 +50,18 @@ const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
     display: flex;
     background: var(--void);
   }
-  .hero-cover-art {
+  .hero-cover-art,
+  .hero-cover-video {
     position: absolute;
     inset: 0;
-    z-index: -3;
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
     object-position: center 54%;
   }
+  .hero-cover-art { z-index: -4; }
+  .hero-cover-video { z-index: -3; }
   .hero::before {
     content: '';
     position: absolute;
@@ -141,7 +143,8 @@ const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
     .hero { min-height: calc(100svh - 64px); }
     .hero-content { padding: 72px 24px 56px; }
     .hero-grid { max-width: 640px; }
-    .hero-cover-art { object-position: 52% center; }
+    .hero-cover-art,
+    .hero-cover-video { object-position: 52% center; }
     .hero::before {
       background:
         linear-gradient(90deg, rgba(2,5,24,0.94) 0%, rgba(3,8,31,0.72) 55%, rgba(4,11,40,0.18) 100%),
@@ -156,12 +159,16 @@ const heroStyles = `  /* ---------- Cinematic cover hero ---------- */
     .hero .lede { font-size: 15px !important; line-height: 1.5; }
     .hero .lede br { display: none; }
     .hero .cta-tiles { margin-top: 24px; }
-    .hero-cover-art { object-position: 52% center; }
+    .hero-cover-art,
+    .hero-cover-video { object-position: 52% center; }
     .hero::before {
       background:
         linear-gradient(90deg, rgba(2,5,24,0.94) 0%, rgba(3,8,31,0.72) 70%, rgba(4,11,40,0.25) 100%),
         linear-gradient(180deg, rgba(2,5,22,0.78) 0%, rgba(2,5,22,0.12) 55%, rgba(2,5,22,0.55) 100%);
     }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-cover-video { display: none; }
   }
 
 `;
@@ -207,6 +214,18 @@ const heroMarkup = `      <section className="hero" data-screen-label="Hero">
           src="cover-hero.png"
           alt="Two astronauts overlook a futuristic city beneath a colossal planet."
         />
+        <video
+          className="hero-cover-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="cover-hero.png"
+          aria-hidden="true"
+        >
+          <source src="cover-hero.mp4" type="video/mp4" />
+        </video>
         <div className="hero-content">
           <div className="hero-grid">
             <div>

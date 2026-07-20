@@ -9,6 +9,8 @@ const templateMatch = outer.match(
 
 assert.ok(templateMatch, 'embedded template payload exists');
 const template = JSON.parse(templateMatch[1]);
+const sourceVideoPath =
+  '/Users/karn/Downloads/u8954488552_create_a_futuristic_image_of_astronauts_building__e595c0d8-9da3-4f54-84c6-366e8c901297_0.mp4';
 
 test('uses the local cinematic cover with accessible copy', () => {
   assert.match(template, /className="hero-cover-art"/);
@@ -60,4 +62,26 @@ test('ships the expected 2544 by 1904 PNG asset', () => {
   assert.equal(png.toString('ascii', 1, 4), 'PNG');
   assert.equal(png.readUInt32BE(16), 2544);
   assert.equal(png.readUInt32BE(20), 1904);
+});
+
+test('uses a decorative local video with a still fallback', () => {
+  assert.match(template, /<video[\s\S]*className="hero-cover-video"/);
+  assert.match(template, /autoPlay/);
+  assert.match(template, /muted/);
+  assert.match(template, /loop/);
+  assert.match(template, /playsInline/);
+  assert.match(template, /preload="metadata"/);
+  assert.match(template, /poster="cover-hero\.png"/);
+  assert.match(template, /aria-hidden="true"/);
+  assert.match(template, /<source src="cover-hero\.mp4" type="video\/mp4" \/>/);
+  assert.doesNotMatch(template, /<video[^>]*controls/);
+  assert.match(template, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(template, /\.hero-cover-video\s*\{\s*display:\s*none/);
+});
+
+test('ships the supplied MP4 byte for byte', () => {
+  const shipped = readFileSync(new URL('../cover-hero.mp4', import.meta.url));
+  const source = readFileSync(sourceVideoPath);
+  assert.ok(shipped.length > 0);
+  assert.deepEqual(shipped, source);
 });
