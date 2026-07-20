@@ -66,7 +66,6 @@ const renderPanel = (study) => `
       <h3>The Ferry platform</h3>
       <div class="story-copy">
         <p>${escapeHtml(study.platform.intro)}</p>
-        ${renderBullets(study.platform.bullets, 'platform-list')}
       </div>
       ${renderWorkflow(study)}
     </section>

@@ -83,3 +83,25 @@ test('keeps every story section and bullet visible in static markup', () => {
   assert.match(html, /Find and validate evidence from previous projects/);
   assert.match(html, /Preserve design intent across iterations/);
 });
+
+const css = readFileSync(new URL('../case-studies.css', import.meta.url), 'utf8');
+
+test('uses the Ferry visual system and master-detail layout', () => {
+  assert.match(css, /@font-face[\s\S]*Geist Pixel/);
+  assert.match(css, /@font-face[\s\S]*Google Sans/);
+  assert.match(css, /--orbit:\s*#2a5bff/i);
+  assert.match(css, /\.case-gallery\s*\{[\s\S]*grid-template-columns:\s*repeat\(2,/);
+  assert.match(css, /\.reader\s*\{[\s\S]*grid-template-columns:/);
+  assert.match(css, /\.case-switcher\s*\{[\s\S]*position:\s*sticky/);
+  assert.match(css, /@media \(max-width:\s*760px\)/);
+  assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)/);
+});
+
+test('uses restrained local visual enhancement', () => {
+  assert.match(css, /\.workflow-icon/);
+  assert.match(css, /\.icon-source/);
+  assert.match(css, /\.icon-geometry/);
+  assert.match(css, /\.impact-list/);
+  assert.doesNotMatch(css, /backdrop-filter/);
+  assert.doesNotMatch(css, /animation:\s*[^n]/);
+});
