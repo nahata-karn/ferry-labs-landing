@@ -440,7 +440,7 @@ git commit -m "Replace animated hero wave with cinematic cover"
 - Consumes: the static page served from the repository root and the `.hero-cover-art`, `.hero-content`, `.hero-grid`, `.hero-copy`, and `.cta-tiles` contracts created in Task 1.
 - Produces: verified desktop and mobile layouts with no browser errors, no overflow, readable text, recognizable artwork framing, and unchanged CTA behavior.
 
-- [ ] **Step 1: Serve the local page**
+- [x] **Step 1: Serve the local page**
 
 Run from the repository root:
 
@@ -450,7 +450,7 @@ python3 -m http.server 4173 --bind 127.0.0.1
 
 Expected: `http://127.0.0.1:4173/` returns HTTP 200.
 
-- [ ] **Step 2: Inspect the desktop viewport**
+- [x] **Step 2: Inspect the desktop viewport**
 
 Open `http://127.0.0.1:4173/` at 1440×900 and verify:
 
@@ -460,7 +460,7 @@ Open `http://127.0.0.1:4173/` at 1440×900 and verify:
 - the footer begins after the hero and does not cover the CTA;
 - there is no canvas element in the hero.
 
-- [ ] **Step 3: Inspect the mobile viewport**
+- [x] **Step 3: Inspect the mobile viewport**
 
 Set the viewport to 390×844, reload, and verify:
 
@@ -469,11 +469,13 @@ Set the viewport to 390×844, reload, and verify:
 - the astronauts and central architecture remain recognizable within the cover crop;
 - the footer follows the hero without covering the CTA.
 
-- [ ] **Step 4: Check browser logs and DOM contracts**
+- [x] **Step 4: Check browser logs and DOM contracts**
 
 Verify the browser console contains no errors or warnings introduced by the change. Confirm exactly one hero CTA is present, its text is “Book a free consultation,” its image source ends in `/cover-hero.png`, its image natural dimensions are 2544×1904, and the hero contains no `canvas`.
 
-- [ ] **Step 5: If visual tuning is needed, update the rewrite source first**
+- [x] **Step 5: If visual tuning is needed, update the rewrite source first**
+
+No additional tuning was needed after desktop and mobile inspection.
 
 Change the exact CSS string in `scripts/rewrite-cinematic-hero.mjs`, then make the matching mechanical change in the embedded template. Do not directly diverge `index.html` from the rewrite source. Re-run:
 
@@ -483,7 +485,7 @@ node --test tests/hero-cover.test.mjs
 
 Expected: 5 tests pass, 0 fail after every adjustment.
 
-- [ ] **Step 6: Run the full final verification**
+- [x] **Step 6: Run the full final verification**
 
 Run:
 
@@ -495,7 +497,7 @@ git status --short --branch
 
 Expected: 5 tests pass, 0 fail; no whitespace errors; the branch contains only the intended committed work plus the untracked `.superpowers/` brainstorming session.
 
-- [ ] **Step 7: Commit any visual-tuning adjustment**
+- [x] **Step 7: Commit any visual-tuning adjustment**
 
 If Task 2 changed tracked files:
 
@@ -505,3 +507,5 @@ git commit -m "Tune cinematic hero framing"
 ```
 
 If no tracked files changed, do not create an empty commit.
+
+No visual-tuning adjustment was required; only this verification record changed.
