@@ -39,3 +39,29 @@ test('renders the image before the single page heading', () => {
   assert.doesNotMatch(html, />Ferry Platform<\/h1>/);
   assert.equal((html.match(/>Start a Deployment <span/g) ?? []).length, 2);
 });
+
+const html = readFileSync(new URL('../ferry-platform.html', import.meta.url), 'utf8');
+const css = readFileSync(new URL('../ferry-platform.css', import.meta.url), 'utf8');
+
+test('uses the Ferry visual system and analog-game icon language', () => {
+  assert.match(css, /@font-face[\s\S]*Geist Pixel/);
+  assert.match(css, /@font-face[\s\S]*Google Sans/);
+  assert.match(css, /--orbit:\s*#2a5bff/i);
+  assert.match(html, /shape-rendering="crispEdges"/);
+  assert.ok((html.match(/class="pixel-icon/g) ?? []).length >= 11);
+  assert.doesNotMatch(html, /unpkg|jsdelivr|fontawesome|lucide/i);
+});
+
+test('keeps the opening image square, centered, and uncropped', () => {
+  assert.match(css, /\.platform-hero-image\s*\{[\s\S]*width:\s*min\(100%,\s*432px\)/);
+  assert.match(css, /\.platform-hero-image\s*\{[\s\S]*object-fit:\s*contain/);
+  assert.match(css, /\.platform-hero-image\s*\{[\s\S]*margin:\s*0 auto/);
+});
+
+test('defines responsive workflow, capability, and deployment diagrams', () => {
+  assert.match(css, /\.process-rail\s*\{[\s\S]*grid-template-columns:/);
+  assert.match(css, /\.includes-grid\s*\{[\s\S]*grid-template-columns:/);
+  assert.match(css, /\.environment-copy\s*\{[\s\S]*grid-template-columns:/);
+  assert.match(css, /@media \(max-width:\s*760px\)/);
+  assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)/);
+});

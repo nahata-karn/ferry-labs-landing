@@ -13,18 +13,67 @@ const paragraphs = (items) => items
   .map((item) => `<p>${escapeHtml(item)}</p>`)
   .join('');
 
+const iconPaths = {
+  outcome: '<path d="M8 4h8v2h4v8h-4v2H8v-2H4V6h4zM10 8h4v4h-4z"/>',
+  workflow: '<path d="M3 5h6v5H3zM15 5h6v5h-6zM9 16h6v5H9zM9 7h6v2H9zM11 9h2v7h-2z"/>',
+  platform: '<path d="M4 5h16v4H4zM6 11h12v4H6zM8 17h8v4H8z"/>',
+  experts: '<path d="M4 5h6v6H4zM14 5h6v6h-6zM2 14h10v6H2zM12 14h10v6H12z"/>',
+  improve: '<path d="M3 18h4v3H3zM9 14h4v7H9zM15 9h4v12h-4zM4 6h2v2H4zM6 4h10v2H6zM16 6h2v2h-2z"/>',
+  context: '<path d="M4 4h5v5H4zM15 4h5v5h-5zM9 15h6v6H9zM9 6h6v2H9zM11 8h2v7h-2z"/>',
+  agents: '<path d="M4 4h16v16H4zM7 8h2v2H7zM15 8h2v2h-2zM8 14h8v2H8z"/>',
+  evaluations: '<path d="M4 4h16v16H4zM7 8h2v2H7zM11 8h6v2h-6zM7 13h2v2H7zM11 13h6v2h-6z"/>',
+  integrations: '<path d="M3 7h7v4H3zM14 7h7v4h-7zM8 15h8v4H8zM10 8h4v2h-4zM11 10h2v5h-2z"/>',
+  review: '<path d="M4 4h16v16H4zM7 12l3 3 7-7 2 2-9 9-5-5z"/>',
+  controlled: '<path d="M5 18h4v3H5zM10 14h4v7h-4zM15 10h4v11h-4zM4 5h16v3H4z"/>'
+};
+
+const pixelIcon = (name) => `<svg class="pixel-icon pixel-icon-${name}" viewBox="0 0 24 24" aria-hidden="true" shape-rendering="crispEdges">${iconPaths[name]}</svg>`;
+
+const customSchematic = `<svg class="system-schematic" viewBox="0 0 520 240" aria-hidden="true" shape-rendering="crispEdges">
+  <g class="schematic-muted">
+    <rect x="24" y="82" width="104" height="76"/>
+    <rect x="208" y="56" width="104" height="128"/>
+    <rect x="392" y="82" width="104" height="76"/>
+  </g>
+  <g class="schematic-accent">
+    <rect x="44" y="102" width="16" height="16"/><rect x="76" y="102" width="32" height="16"/><rect x="44" y="134" width="64" height="8"/>
+    <rect x="228" y="80" width="64" height="12"/><rect x="228" y="108" width="64" height="12"/><rect x="228" y="136" width="64" height="12"/>
+    <rect x="412" y="102" width="64" height="8"/><rect x="412" y="126" width="24" height="16"/><rect x="452" y="126" width="24" height="16"/>
+    <path d="M128 116h48v-12h16v32h-16v-12h-48zM312 116h48v-12h16v32h-16v-12h-48z"/>
+  </g>
+</svg>`;
+
+const environmentSchematic = `<svg class="system-schematic environment-schematic" viewBox="0 0 760 260" aria-hidden="true" shape-rendering="crispEdges">
+  <g class="schematic-muted"><rect x="304" y="24" width="152" height="68"/><rect x="40" y="160" width="252" height="72"/><rect x="468" y="160" width="252" height="72"/></g>
+  <g class="schematic-accent">
+    <rect x="328" y="44" width="104" height="12"/><rect x="344" y="68" width="72" height="8"/>
+    <path d="M372 92h16v28h-96v16h-16v-32h80V92zM388 92h16v12h80v32h-16v-16h-80z"/>
+    <rect x="64" y="184" width="32" height="24"/><rect x="112" y="184" width="64" height="8"/><rect x="112" y="200" width="112" height="8"/>
+    <rect x="492" y="184" width="32" height="24"/><rect x="540" y="184" width="64" height="8"/><rect x="540" y="200" width="112" height="8"/>
+  </g>
+</svg>`;
+
+const engagementSchematic = `<svg class="system-schematic engagement-schematic" viewBox="0 0 520 240" aria-hidden="true" shape-rendering="crispEdges">
+  <g class="schematic-muted"><rect x="36" y="44" width="152" height="152"/><rect x="332" y="44" width="152" height="152"/></g>
+  <g class="schematic-accent">
+    <rect x="84" y="72" width="56" height="48"/><rect x="64" y="136" width="96" height="36"/>
+    <rect x="380" y="72" width="56" height="48"/><rect x="360" y="136" width="96" height="36"/>
+    <path d="M188 104h48V88l24 32-24 32v-16h-48zM332 136h-48v16l-24-32 24-32v16h48z"/>
+  </g>
+</svg>`;
+
 export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
   const steps = page.howWeWork.map(([title, body, icon], index) => `
         <article class="process-step">
           <span class="step-number">${String(index + 1).padStart(2, '0')}</span>
-          <span class="pixel-icon pixel-icon-${icon}" aria-hidden="true"></span>
+          ${pixelIcon(icon)}
           <h3>${escapeHtml(title)}</h3>
           <p>${escapeHtml(body)}</p>
         </article>`).join('');
 
   const includes = page.includes.map(([copy, icon]) => `
         <li>
-          <span class="pixel-icon pixel-icon-${icon}" aria-hidden="true"></span>
+          ${pixelIcon(icon)}
           <span>${escapeHtml(copy)}</span>
         </li>`).join('');
 
@@ -66,7 +115,7 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
         <h2>Custom by design</h2>
         ${paragraphs(page.customByDesign)}
       </div>
-      <div class="custom-schematic" aria-hidden="true"></div>
+      <div class="custom-schematic">${customSchematic}</div>
     </section>
 
     <section class="editorial-section process-section">
@@ -83,7 +132,7 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
 
     <section class="editorial-section environment-section">
       <h2>Your environment or ours.</h2>
-      <div class="environment-diagram" aria-hidden="true"></div>
+      <div class="environment-diagram">${environmentSchematic}</div>
       <div class="environment-copy">${paragraphs(page.environments)}</div>
     </section>
 
@@ -92,7 +141,7 @@ export function renderFerryPlatformPage(page = PLATFORM_PAGE) {
         <h2>How we engage</h2>
         ${paragraphs(page.engagement)}
       </div>
-      <div class="engagement-schematic" aria-hidden="true"></div>
+      <div class="engagement-schematic-wrap">${engagementSchematic}</div>
     </section>
 
     <section class="closing-cta">
