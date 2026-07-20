@@ -105,7 +105,7 @@ a {
 }
 
 .page-intro {
-  margin-bottom: 30px;
+  margin-bottom: 48px;
 }
 
 .page-intro h1,
@@ -120,7 +120,9 @@ a {
 .page-intro h1 {
   max-width: 920px;
   margin: 0;
-  font-size: clamp(44px, 5vw, 72px);
+  width: 100%;
+  text-align: center;
+  font-size: clamp(37px, 4.25vw, 61px);
   line-height: 0.94;
 }
 
@@ -134,7 +136,7 @@ a {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   width: 100%;
-  max-width: 1120px;
+  max-width: 952px;
   margin: 0 auto 96px;
 }
 
@@ -190,8 +192,8 @@ a {
 }
 
 .case-card-copy {
-  min-height: 124px;
-  padding: 20px;
+  min-height: 105px;
+  padding: 17px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -199,7 +201,7 @@ a {
 
 .case-card-copy strong {
   max-width: 620px;
-  font-size: clamp(22px, 2.1vw, 32px);
+  font-size: clamp(19px, 1.8vw, 27px);
   line-height: 1.05;
 }
 
@@ -532,18 +534,18 @@ a {
   }
 
   .page-intro h1 {
-    font-size: clamp(42px, 13vw, 58px);
+    font-size: clamp(36px, 11vw, 49px);
   }
 
   .case-gallery {
     grid-template-columns: 1fr;
-    max-width: 520px;
+    max-width: 442px;
     margin-bottom: 72px;
   }
 
   .case-card-copy {
-    min-height: 112px;
-    padding: 18px;
+    min-height: 95px;
+    padding: 15px;
   }
 
   .case-switcher {
