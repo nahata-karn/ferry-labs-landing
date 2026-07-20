@@ -34,13 +34,14 @@ test('removes the animated floor grid completely', () => {
 test('preserves the current conversion content and booking destination', () => {
   assert.match(
     template,
-    /Turn your expert knowledge\\ninto autonomous agents\./
+    /AI for the companies building the physical future\./
   );
   assert.match(
     template,
-    /Founded by <u>Stanford<\/u> and <u>Berkeley<\/u> graduates/
+    /We build intelligent systems that learn from your experts and take on the most complex work your company depends on\./
   );
-  assert.match(
+  assert.doesNotMatch(template, /Founded by <u>Stanford<\/u>/);
+  assert.doesNotMatch(
     template,
     /Customers include frontier companies in space, data centers, robotics, and energy\./
   );

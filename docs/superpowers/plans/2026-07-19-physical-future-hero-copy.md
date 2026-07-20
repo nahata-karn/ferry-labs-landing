@@ -29,7 +29,7 @@
 - Consumes: `TWEAK_DEFAULTS.headline`, `.hero-copy`, and the current embedded template payload.
 - Produces: the exact approved headline and one exact `.lede` paragraph.
 
-- [ ] **Step 1: Update the copy test first**
+- [x] **Step 1: Update the copy test first**
 
 Replace the old headline and paragraph assertions inside `preserves the current conversion content and booking destination` with:
 
@@ -51,7 +51,7 @@ Replace the old headline and paragraph assertions inside `preserves the current 
 
 Keep the CTA label, booking URL, city, video, fallback, and no-canvas assertions unchanged.
 
-- [ ] **Step 2: Run the test and confirm RED**
+- [x] **Step 2: Run the test and confirm RED**
 
 Run:
 
@@ -61,20 +61,20 @@ node --test tests/hero-cover.test.mjs
 
 Expected: the copy contract test fails because the new headline and paragraph are absent; the remaining six tests pass.
 
-- [ ] **Step 3: Add the headline replacement to the rewrite source**
+- [x] **Step 3: Add the headline replacement to the rewrite source**
 
 Add this exact replacement after the legacy mobile hero cleanup in `scripts/rewrite-cinematic-hero.mjs`:
 
 ```js
 template = replaceExact(
   template,
-  '      "headline": "Turn your expert knowledge\\ninto autonomous agents.",',
-  '      "headline": "AI for the companies building the physical future.",',
+  '  "headline": "Turn your expert knowledge\\ninto autonomous agents.",',
+  '  "headline": "AI for the companies building the physical future.",',
   'hero headline default'
 );
 ```
 
-- [ ] **Step 4: Replace both old paragraphs in the rewrite source**
+- [x] **Step 4: Replace both old paragraphs in the rewrite source**
 
 Inside `heroMarkup`, replace the existing `.hero-copy` contents with:
 
@@ -84,11 +84,11 @@ Inside `heroMarkup`, replace the existing `.hero-copy` contents with:
             </div>
 ```
 
-- [ ] **Step 5: Synchronize the generated template mechanically**
+- [x] **Step 5: Synchronize the generated template mechanically**
 
 Decode the JSON inside `script[type="__bundler/template"]`, replace the exact old `TWEAK_DEFAULTS.headline` source string and exact old two-paragraph `.hero-copy` block with the new strings from Steps 3 and 4, serialize the JSON while escaping closing script tags as `<\\/script>`, and write only the embedded payload back to `index.html`.
 
-- [ ] **Step 6: Run GREEN checks**
+- [x] **Step 6: Run GREEN checks**
 
 Run:
 
@@ -100,7 +100,7 @@ git diff --check
 
 Expected: 7 tests pass, 0 fail; syntax and whitespace checks exit 0.
 
-- [ ] **Step 7: Commit the copy implementation**
+- [x] **Step 7: Commit the copy implementation**
 
 ```bash
 git add index.html scripts/rewrite-cinematic-hero.mjs tests/hero-cover.test.mjs docs/superpowers/plans/2026-07-19-physical-future-hero-copy.md

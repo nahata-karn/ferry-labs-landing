@@ -208,6 +208,13 @@ template = replaceExact(
   'legacy mobile hero padding'
 );
 
+template = replaceExact(
+  template,
+  '  "headline": "Turn your expert knowledge\\ninto autonomous agents.",',
+  '  "headline": "AI for the companies building the physical future.",',
+  'hero headline default'
+);
+
 const heroMarkup = `      <section className="hero" data-screen-label="Hero">
         <img
           className="hero-cover-art"
@@ -232,8 +239,7 @@ const heroMarkup = `      <section className="hero" data-screen-label="Hero">
               <h1 className="headline" style={{ maxWidth: "680px", textAlign: "left" }}>{tweaks.headline}</h1>
             </div>
             <div className="hero-copy">
-              <p className="lede">Founded by <u>Stanford</u> and <u>Berkeley</u> graduates who have led<br />elite engineering and research teams at frontier AI labs.</p>
-              <p className="lede" style={{ marginTop: "18px" }}>Customers include frontier companies in space, data centers, robotics, and energy.</p>
+              <p className="lede">We build intelligent systems that learn from your experts and take on the most complex work your company depends on.</p>
             </div>
           </div>
 
