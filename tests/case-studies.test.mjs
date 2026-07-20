@@ -157,7 +157,9 @@ test('links to case studies without changing landing conversion copy', () => {
   assert.match(landingTemplate, /className="nav-cta"/);
   assert.match(landingTemplate, /nav-cta-short">Start deployment/);
   assert.match(landingTemplate, /AI for the companies building the physical future\./);
-  assert.match(landingTemplate, /Book a free consultation/);
+  assert.match(landingTemplate, /"ctaLabel": "Start deployment"/);
+  assert.match(landingTemplate, /className="cta-tile secondary" href="case-studies\.html"/);
+  assert.match(landingTemplate, /width:\s*240px/);
   assert.match(landingTemplate, /Ferry Labs, San Francisco/);
 });
 

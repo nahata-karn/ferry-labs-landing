@@ -133,6 +133,63 @@ const navMarkup = `      <div className="nav-wrap">
       </div>`;
 template = template.slice(0, navMarkupStart) + navMarkup + template.slice(navMarkupEnd);
 
+const heroCtaStart = template.indexOf('          <div className="cta-tiles">');
+const heroCtaEnd = template.indexOf('\n          </div>', heroCtaStart);
+if (heroCtaStart < 0 || heroCtaEnd < 0) {
+  throw new Error('Landing hero CTA markup not found');
+}
+
+const heroCtaMarkup = `          <div className="cta-tiles">
+            <button className="cta-tile primary" onClick={openBooking}>
+              <span style={{ fontSize: "16px", fontFamily: "'Google Sans', 'Inter', sans-serif" }}>{tweaks.ctaLabel}</span>
+              <span className="tile-arrow" aria-hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="6" y1="18" x2="18" y2="6" />
+                  <polyline points="9 6 18 6 18 15" />
+                </svg>
+              </span>
+            </button>
+            <a className="cta-tile secondary" href="case-studies.html">
+              <span style={{ fontSize: "16px", fontFamily: "'Google Sans', 'Inter', sans-serif" }}>Case Studies</span>
+              <span className="tile-arrow" aria-hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="6" y1="18" x2="18" y2="6" />
+                  <polyline points="9 6 18 6 18 15" />
+                </svg>
+              </span>
+            </a>
+          </div>`;
+template = template.slice(0, heroCtaStart) + heroCtaMarkup + template.slice(heroCtaEnd + '\n          </div>'.length);
+
+const heroCtaCssStart = template.indexOf('  .hero .cta-tiles {');
+const heroCtaChildStart = template.indexOf('  .hero .cta-tiles > * {', heroCtaCssStart);
+const heroCtaCssEnd = template.indexOf('\n  }', heroCtaChildStart) + '\n  }'.length;
+if (heroCtaCssStart < 0 || heroCtaChildStart < 0 || heroCtaCssEnd < 0) {
+  throw new Error('Landing hero CTA styles not found');
+}
+
+const heroCtaCss = `  .hero .cta-tiles {
+    position: relative;
+    z-index: 2;
+    width: auto;
+    max-width: none;
+    margin: 30px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .hero .cta-tiles > * {
+    grid-column: auto;
+    justify-self: auto;
+    width: 240px;
+    margin-left: 0;
+  }`;
+template = template.slice(0, heroCtaCssStart) + heroCtaCss + template.slice(heroCtaCssEnd);
+
+template = template.replace('"ctaLabel": "Book a free consultation"', '"ctaLabel": "Start deployment"');
+
 template = template.replace('    .nav-links { display: flex; gap: 18px; }', '    .nav-links { display: flex; gap: 14px; }');
 template = template.replace('    .nav { padding: 0 20px; }', '    .nav { padding: 7px; }');
 template = template.replace('    .nav { height: 56px; }', '    .nav { height: 54px; }');
