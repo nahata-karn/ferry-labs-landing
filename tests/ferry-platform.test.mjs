@@ -96,7 +96,9 @@ test('defines responsive workflow, capability, and artwork layouts', () => {
   assert.match(css, /\.process-rail\s*\{[\s\S]*grid-template-columns:/);
   assert.match(css, /\.includes-grid\s*\{[\s\S]*grid-template-columns:/);
   assert.match(css, /\.environment-section\s*,[\s\S]*grid-template-columns:/);
-  assert.match(css, /\.section-image img\s*\{[\s\S]*object-fit:\s*contain/);
+  assert.match(css, /\.section-image\s*\{[\s\S]*width:\s*min\(100%,\s*420px\)/);
+  assert.match(css, /\.section-image img\s*\{[\s\S]*object-fit:\s*cover/);
+  assert.doesNotMatch(css, /\.section-image\s*\{[\s\S]*border:/);
   assert.doesNotMatch(css, /environment-diagram|custom-schematic/);
   assert.match(css, /@media \(max-width:\s*1100px\)/);
   assert.match(css, /@media \(max-width:\s*760px\)/);
