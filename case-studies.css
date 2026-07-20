@@ -223,6 +223,7 @@ a {
 .story-header h2 {
   max-width: 980px;
   margin: 12px 0 0;
+  text-align: center;
   font-size: clamp(34px, 4vw, 58px);
   line-height: 0.99;
 }
