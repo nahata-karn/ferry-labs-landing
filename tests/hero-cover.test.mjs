@@ -104,7 +104,7 @@ test('fits the hero to the viewport and expands the left content lockup', () => 
   assert.doesNotMatch(heroBaseStyles, /min-height:\s*calc\(100svh/);
   assert.match(
     template,
-    /padding:\s*clamp\(72px, 10vh, 116px\) clamp\(32px, 5vw, 72px\) 24px/
+    /padding:\s*clamp\(92px, 12vh, 136px\) clamp\(32px, 5vw, 72px\) 24px/
   );
   assert.match(template, /\.hero-grid\s*\{[\s\S]*max-width:\s*900px/);
   assert.match(template, /\.hero-copy\s*\{[\s\S]*max-width:\s*760px/);
