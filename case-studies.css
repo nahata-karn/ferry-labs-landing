@@ -92,9 +92,8 @@ a {
 
 .brand img {
   width: 30px;
-  height: 22px;
-  object-fit: cover;
-  mix-blend-mode: screen;
+  height: auto;
+  display: block;
 }
 
 .eyebrow,
@@ -502,7 +501,7 @@ a {
 
   .brand { width: 36px; height: 36px; padding: 0; }
 
-  .brand img { width: 27px; height: 20px; }
+  .brand img { width: 27px; height: auto; }
 
   .site-nav {
     gap: 8px;

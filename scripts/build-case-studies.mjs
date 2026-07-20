@@ -90,7 +90,7 @@ export function renderCaseStudiesPage(studies = CASE_STUDIES) {
 <body>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Ferry Labs home">
-      <img src="ferry-logo.png" alt="" width="34" height="34">
+      <img src="ferry-logo-mark.png" alt="">
     </a>
     <nav class="site-nav" aria-label="Primary">
       <a class="header-link" href="case-studies.html" aria-current="page">Case Studies</a>

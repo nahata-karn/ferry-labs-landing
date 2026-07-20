@@ -60,9 +60,8 @@ const navCss = `  .nav-wrap {
   }
   .brand img {
     width: 30px !important;
-    height: 22px !important;
-    object-fit: cover;
-    mix-blend-mode: screen;
+    height: auto !important;
+    display: block;
   }
   .nav-links { display: flex; align-items: center; justify-content: flex-start; gap: 18px; }
   .nav-link {
@@ -98,7 +97,7 @@ const navCss = `  .nav-wrap {
     .nav-wrap { top: 8px; width: max-content; max-width: calc(100% - 16px); }
     .nav { height: 54px; padding: 6px; gap: 8px; border-radius: 15px; }
     .brand { width: 36px; height: 36px; padding: 0; }
-    .brand img { width: 27px !important; height: 20px !important; }
+    .brand img { width: 27px !important; height: auto !important; }
     .nav-links { gap: 8px; }
     .nav-link { padding: 8px 1px; font-size: 11px; }
     .nav-cta { padding: 10px 12px; font-size: 12px; }
@@ -118,7 +117,7 @@ if (navMarkupStart < 0 || navMarkupEnd < 0) {
 const navMarkup = `      <div className="nav-wrap">
         <nav className="nav" aria-label="Primary">
           <a className="brand" href="index.html" aria-label="Ferry Labs home">
-            <img src="ferry-logo.png" alt="" style={{ height: "34px", width: "auto", display: "block" }} />
+            <img src="ferry-logo-mark.png" alt="" />
           </a>
           <div className="nav-links">
             {NAV.map((item) =>
