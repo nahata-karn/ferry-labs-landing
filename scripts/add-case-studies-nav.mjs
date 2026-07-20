@@ -39,7 +39,7 @@ const navCss = `  .nav-wrap {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 8px;
+    gap: 18px;
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 18px;
     background: rgba(17,24,45,0.58);
@@ -51,15 +51,20 @@ const navCss = `  .nav-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    padding: 7px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
     flex: 0 0 auto;
     border-radius: 11px;
-    background: rgba(255,255,255,0.09);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.13);
   }
-  .nav-links { display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
+  .brand img {
+    width: 30px !important;
+    height: 22px !important;
+    object-fit: cover;
+    mix-blend-mode: screen;
+  }
+  .nav-links { display: flex; align-items: center; justify-content: flex-start; gap: 18px; }
   .nav-link {
     padding: 10px 4px;
     color: rgba(255,255,255,0.76);
@@ -92,7 +97,8 @@ const navCss = `  .nav-wrap {
   @media (max-width: 540px) {
     .nav-wrap { top: 8px; width: max-content; max-width: calc(100% - 16px); }
     .nav { height: 54px; padding: 6px; gap: 8px; border-radius: 15px; }
-    .brand { width: 42px; height: 42px; padding: 4px; }
+    .brand { width: 36px; height: 36px; padding: 0; }
+    .brand img { width: 27px !important; height: 20px !important; }
     .nav-links { gap: 8px; }
     .nav-link { padding: 8px 1px; font-size: 11px; }
     .nav-cta { padding: 10px 12px; font-size: 12px; }

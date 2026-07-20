@@ -114,6 +114,8 @@ test('fits the hero to the viewport and expands the left content lockup', () => 
 test('renders the Ferry logo as a standalone sticky navigation button', () => {
   assert.doesNotMatch(template, /className="brand-name"/);
   assert.match(template, /\.nav-wrap\s*\{[\s\S]*position:\s*fixed/);
-  assert.match(template, /\.brand\s*\{[\s\S]*width:\s*48px/);
+  assert.match(template, /\.brand\s*\{[\s\S]*width:\s*40px/);
+  assert.match(template, /\.brand img\s*\{[\s\S]*mix-blend-mode:\s*screen/);
+  assert.match(template, /\.nav-links\s*\{[\s\S]*gap:\s*18px/);
   assert.match(template, /\.nav-link\s*\{[\s\S]*font-family:\s*'Geist Pixel'/);
 });
