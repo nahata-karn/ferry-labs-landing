@@ -24,17 +24,6 @@ const renderWorkflow = (study) => `
       </li>`).join('')}
   </ol>`;
 
-const renderCard = (study) => `
-  <a class="case-card" data-case-link="${escapeHtml(study.slug)}"
-     href="#${escapeHtml(study.slug)}">
-    <span class="case-card-media">
-      <img src="${escapeHtml(study.image)}" alt="" width="2048" height="2048">
-    </span>
-    <span class="case-card-copy">
-      <strong>${escapeHtml(study.title)}</strong>
-    </span>
-  </a>`;
-
 const renderPanel = (study) => `
   <article class="case-panel" id="${escapeHtml(study.slug)}"
            data-case-panel="${escapeHtml(study.slug)}" tabindex="-1">
@@ -78,7 +67,6 @@ const renderPanel = (study) => `
   </article>`;
 
 export function renderCaseStudiesPage(studies = CASE_STUDIES) {
-  const cards = studies.map(renderCard).join('\n');
   const panels = studies.map(renderPanel).join('\n');
   const switcher = studies.map((study) => `
     <a href="#${escapeHtml(study.slug)}" class="case-switch"
@@ -110,7 +98,6 @@ export function renderCaseStudiesPage(studies = CASE_STUDIES) {
     <header class="page-intro">
       <h1>Case Studies</h1>
     </header>
-    <section class="case-gallery" aria-label="Case studies">${cards}</section>
     <section class="reader" id="selected-case-study" aria-label="Selected case study">
       <nav class="case-switcher" aria-label="Choose a case study">${switcher}</nav>
       <div class="case-reader">${panels}</div>

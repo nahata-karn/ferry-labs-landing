@@ -109,8 +109,7 @@ a {
 }
 
 .page-intro h1,
-.story-header h2,
-.case-card-copy strong {
+.story-header h2 {
   font-family: 'Geist Pixel', 'Google Sans', sans-serif;
   font-weight: 400;
   letter-spacing: -0.025em;
@@ -131,41 +130,6 @@ a {
   color: #86a0ff;
 }
 
-.case-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  width: 100%;
-  max-width: 952px;
-  margin: 0 auto 96px;
-}
-
-.case-card {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: linear-gradient(145deg, rgba(18, 29, 58, 0.92), rgba(7, 10, 20, 0.98));
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.case-card:hover,
-.case-card:focus-visible,
-.case-card[aria-current='true'] {
-  border-color: rgba(88, 122, 255, 0.92);
-  transform: translateY(-3px);
-  outline: none;
-}
-
-.case-card-media {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: #0b1737;
-}
-
-.case-card-media::after,
 .case-hero::after {
   content: '';
   position: absolute;
@@ -174,35 +138,11 @@ a {
   pointer-events: none;
 }
 
-.case-card-media img,
 .case-hero img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.case-card-media img {
-  object-fit: contain;
-  transition: transform 0.24s ease;
-}
-
-.case-card:hover img {
-  transform: scale(1.02);
-}
-
-.case-card-copy {
-  min-height: 105px;
-  padding: 17px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.case-card-copy strong {
-  max-width: 620px;
-  font-size: clamp(19px, 1.8vw, 27px);
-  line-height: 1.05;
 }
 
 .reader {
@@ -537,17 +477,6 @@ a {
     font-size: clamp(36px, 11vw, 49px);
   }
 
-  .case-gallery {
-    grid-template-columns: 1fr;
-    max-width: 442px;
-    margin-bottom: 72px;
-  }
-
-  .case-card-copy {
-    min-height: 95px;
-    padding: 15px;
-  }
-
   .case-switcher {
     overflow-x: auto;
   }
@@ -598,12 +527,4 @@ a {
     scroll-behavior: auto;
   }
 
-  .case-card,
-  .case-card-media img {
-    transition: none;
-  }
-
-  .case-card:hover {
-    transform: none;
-  }
 }

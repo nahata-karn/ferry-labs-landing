@@ -57,8 +57,9 @@ const html = readFileSync(new URL('../case-studies.html', import.meta.url), 'utf
 
 test('renders the gallery and both complete stories', () => {
   assert.match(html, /<main[^>]*class="case-studies"/);
-  assert.equal((html.match(/class="case-card"/g) ?? []).length, 2);
   assert.equal((html.match(/class="case-panel"/g) ?? []).length, 2);
+  assert.doesNotMatch(html, /class="case-gallery"/);
+  assert.match(html, /<section class="reader"/);
   assert.match(html, /id="energy-transmission"/);
   assert.match(html, /id="spacecraft-engineering"/);
   assert.match(html, /Scaling a \$4B project portfolio/);
@@ -66,21 +67,11 @@ test('renders the gallery and both complete stories', () => {
   assert.match(html, /\$XXXM in estimated additional revenue/);
 });
 
-test('keeps the opening gallery compact, title-only, and uncropped', () => {
-  const gallery = html.slice(
-    html.indexOf('<section class="case-gallery"'),
-    html.indexOf('<section class="reader"')
-  );
-
-  assert.doesNotMatch(gallery, /class="case-number"/);
-  assert.doesNotMatch(gallery, /class="case-domain"/);
-  assert.doesNotMatch(gallery, /class="case-link-label"/);
-  assert.doesNotMatch(gallery, /Read case study/);
-  assert.match(css, /\.case-gallery\s*\{[\s\S]*max-width:\s*952px/);
+test('starts directly with the detailed reader and side selector', () => {
+  assert.doesNotMatch(html, /class="case-card/);
+  assert.match(css, /\.reader\s*\{[\s\S]*grid-template-columns:/);
   assert.match(css, /\.page-intro h1\s*\{[\s\S]*text-align:\s*center/);
   assert.match(css, /\.page-intro h1\s*\{[\s\S]*margin:\s*0 auto/);
-  assert.match(css, /\.case-card-media\s*\{[\s\S]*aspect-ratio:\s*1\s*\/\s*1/);
-  assert.match(css, /\.case-card-media img\s*\{[\s\S]*object-fit:\s*contain/);
 });
 
 test('renders accessible local imagery and conversion links', () => {
@@ -107,7 +98,6 @@ test('uses the Ferry visual system and master-detail layout', () => {
   assert.match(css, /@font-face[\s\S]*Geist Pixel/);
   assert.match(css, /@font-face[\s\S]*Google Sans/);
   assert.match(css, /--orbit:\s*#2a5bff/i);
-  assert.match(css, /\.case-gallery\s*\{[\s\S]*grid-template-columns:\s*repeat\(2,/);
   assert.match(css, /\.reader\s*\{[\s\S]*grid-template-columns:/);
   assert.match(css, /\.case-switcher\s*\{[\s\S]*position:\s*sticky/);
   assert.match(css, /@media \(max-width:\s*760px\)/);
