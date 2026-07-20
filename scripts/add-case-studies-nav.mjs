@@ -22,6 +22,15 @@ const desiredNav = `const NAV = [
   { label: 'Ferry Platform', href: 'ferry-platform.html' }
 ];`;
 template = template.replace(/const NAV = \[[\s\S]*?\];/, desiredNav);
+template = template.replace(
+  '<head>',
+  '<head>\n<link rel="preload" as="image" href="cover-hero.webp" type="image/webp" fetchpriority="high">'
+);
+template = template.replace(
+  'className="hero-cover-art"\n          src="cover-hero.png"',
+  'className="hero-cover-art"\n          src="cover-hero.png"\n          srcSet="cover-hero.webp"'
+);
+template = template.replace('poster="cover-hero.webp"', 'poster="cover-hero.png"');
 
 const navCssStart = template.indexOf('  .nav-wrap {');
 const navCssEnd = template.indexOf('  /* ---------- Cinematic cover hero ---------- */', navCssStart);
