@@ -2,3 +2,5 @@
 *.zip
 index.prev.html
 og logo.png
+.superpowers/
+.worktrees/
