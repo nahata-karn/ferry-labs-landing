@@ -100,7 +100,7 @@ a {
   top: 14px;
   left: 50%;
   z-index: 20;
-  width: min(560px, calc(100% - 24px));
+  width: max-content;
   max-width: calc(100% - 24px);
   height: 64px;
   padding: 7px;
@@ -142,7 +142,7 @@ a {
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
-  flex: 1;
+  flex: 0 0 auto;
   min-width: 0;
 }
 

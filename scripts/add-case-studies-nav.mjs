@@ -59,7 +59,7 @@ const navCss = `  @view-transition {
     z-index: 50;
     top: 14px;
     left: 50%;
-    width: min(560px, calc(100% - 24px));
+    width: max-content;
     max-width: calc(100% - 24px);
     transform: translateX(-50%);
     view-transition-name: ferry-nav;
@@ -95,7 +95,7 @@ const navCss = `  @view-transition {
     height: auto !important;
     display: block;
   }
-  .nav-links { display: flex; align-items: center; justify-content: flex-start; gap: 12px; flex: 1; min-width: 0; }
+  .nav-links { display: flex; align-items: center; justify-content: flex-start; gap: 12px; flex: 0 0 auto; }
   .nav-link {
     padding: 10px 4px;
     color: rgba(255,255,255,0.76);
